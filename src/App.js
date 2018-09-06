@@ -10,7 +10,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      restaurants: []
+      restaurants: [],
+      lat: '',
+      lon: '',
+      destination: ''
+
     }
   }
   componentDidMount() {
@@ -43,77 +47,53 @@ class App extends Component {
           }).then(res => {
             // console.log(res.data.results);
             this.setState ({
-              restaurants: res.data.results
+              restaurants: res.data.results,
+              lat: lat,
+              lon: lon
             })
           })
         }
       };
       navigator.geolocation.getCurrentPosition(geoSuccess);
     };
-
-    axios({
-      method: 'GET',
-      url: 'https://proxy.hackeryou.com',
-      dataResponse: 'json',
-      paramsSerializer: function (params) {
-        return Qs.stringify(params, { arrayFormat: 'brackets' })
-      },
-      params: {
-        reqUrl: 'https://maps.googleapis.com/maps/api/directions/json?',
-        params: {
-          key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
-          origin: '43.648258999999996 -79.3978917',
-          destination: 'CN Tower',
-          mode: 'walking'
+  }
+  getDestination = (destination) => {
+    this.setState({
+      destination: destination
+    }, () => {
+      axios({
+        method: 'GET',
+        url: 'https://proxy.hackeryou.com',
+        dataResponse: 'json',
+        paramsSerializer: function (params) {
+          return Qs.stringify(params, { arrayFormat: 'brackets' })
         },
-        xmlToJSON: false
-      }
-    }).then(res => {
-      // console.log(res.data);
-      console.log(res.data.routes[0].legs[0].steps[0]);
-    })
-  }
-  // getResponse = () => {
-  //   if (document.getElementById('startLat').innerHTML) {
-  //     this.getPlaces(document.getElementById('startLat').innerHTML, document.getElementById('startLon').innerHTML);
-  //     console.log('allowed')
-  //   } else {
-  //     console.log('not allowed')
-  //   }
-  // }
-  // getPlaces = (lat, lon) => {
-  //   axios({
-  //     method: 'GET',
-  //     url: 'https://proxy.hackeryou.com',
-  //     dataResponse: 'json',
-  //     paramsSerializer: function (params) {
-  //       return Qs.stringify(params, { arrayFormat: 'brackets' })
-  //     },
-  //     params: {
-  //       reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
-  //       params: {
-  //         key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
-  //         location: `${lat} ${lon}`,
-  //         radius: 1000,
-  //         keyword: 'restaurants'
-  //       },
-  //       xmlToJSON: false
-  //     }
-  //   }).then(res => {
-  //     console.log(res.data.results);
-  //   })
-  // }
-  // handleChange = (e) => {
-  //   console.log(e.target.value)
-  //   this.setState({
-  //     restaurants: e.target.value,
-  //   })
-  //   const userInput = this.state.restaurants;
-  // }
+        params: {
+          reqUrl: 'https://maps.googleapis.com/maps/api/directions/json?',
+          params: {
+            key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
+            origin: `${this.state.lat} ${this.state.lon}`,
+            destination: `${this.state.destination}`,
+            mode: 'walking'
+          },
+          xmlToJSON: false
+        }
+      }).then(res => {
+        console.log(res.data);
+        // console.log(res);
+      })
 
-  handleSubmit = (e) => {
-    e.preventDefault();
+      // console.log(destination);
+    })
+    
+    
   }
+
+
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  // }
+  
 
   render() {
     return (
@@ -124,7 +104,7 @@ class App extends Component {
             {/* <input type="text" className="search" onChange={this.handleChange} value={this.state.restaurants}/> */}
             <input type="submit"/>
           </form>
-          <Results restaurantsArray ={this.state.restaurants} />
+          <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} />
           <div id="startLat"></div>   
           <div id="startLon"></div>  
           
