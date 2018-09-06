@@ -3,6 +3,7 @@ import './App.css';
 import Footer from './components/Footer';
 import axios from 'axios';
 import Qs from 'qs';
+import Results from './components/Results';
 
 
 class App extends Component {
@@ -13,14 +14,42 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    window.onload = function () {
+    window.onload = () => {
       var startPos;
-      var geoSuccess = function (position) {
+      var geoSuccess = (position) => {
         startPos = position;
         const lat = document.getElementById('startLat').innerHTML = startPos.coords.latitude;
         const lon = document.getElementById('startLon').innerHTML = startPos.coords.longitude;
         if (lat != null && lon != null) {
-         
+          axios({
+            method: 'GET',
+            url: 'https://proxy.hackeryou.com',
+            dataResponse: 'json',
+            paramsSerializer: function (params) {
+              return Qs.stringify(params, { arrayFormat: 'brackets' })
+            },
+            params: {
+              reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
+              params: {
+                key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
+                location: `${lat} ${lon}`,
+                radius: 1000,
+                keyword: 'restaurant',
+              },
+              xmlToJSON: false
+            }
+
+          }).then(res => {
+            // console.log(res.data.results);
+            this.setState = {
+              restaurants: res.data
+            }
+          })
+        }
+      };
+      navigator.geolocation.getCurrentPosition(geoSuccess);
+    };
+
     axios({
       method: 'GET',
       url: 'https://proxy.hackeryou.com',
@@ -29,24 +58,19 @@ class App extends Component {
         return Qs.stringify(params, { arrayFormat: 'brackets' })
       },
       params: {
-        reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
+        reqUrl: 'https://maps.googleapis.com/maps/api/directions/json?',
         params: {
           key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
-          location: `${lat} ${lon}`,
-          radius: 1000,
-          keyword: 'restaurant',
+          origin: '43.648258999999996 -79.3978917',
+          destination: 'CN Tower',
+          mode: 'walking'
         },
         xmlToJSON: false
       }
     }).then(res => {
-      console.log(res.data.results);
+      // console.log(res.data);
+      console.log(res.data.routes[0].legs[0].steps[0]);
     })
-          
-        }
-      };
-      navigator.geolocation.getCurrentPosition(geoSuccess);
-    };
-    
   }
   // getResponse = () => {
   //   if (document.getElementById('startLat').innerHTML) {
@@ -78,28 +102,30 @@ class App extends Component {
   //     console.log(res.data.results);
   //   })
   // }
-  handleChange = (e) => {
-    console.log(e.target.value)
-    this.setState({
-      restaurants: e.target.value,
-    })
-    const userInput = this.state.restaurants;
-  }
+  // handleChange = (e) => {
+  //   console.log(e.target.value)
+  //   this.setState({
+  //     restaurants: e.target.value,
+  //   })
+  //   const userInput = this.state.restaurants;
+  // }
+
   handleSubmit = (e) => {
     e.preventDefault();
-
   }
+
   render() {
     return (
       <Fragment>
         <h2>StumbleGrumble</h2>
         <main className="App">
           <form onSubmit={this.handleSubmit}>
-            <input type="text" className="search" onChange={this.handleChange} value={this.state.restaurants}/>
+            {/* <input type="text" className="search" onChange={this.handleChange} value={this.state.restaurants}/> */}
             <input type="submit"/>
-          </form>  
+          </form>
+          <Results />
           <div id="startLat"></div>   
-          <div id="startLon"></div>   
+          <div id="startLon"></div>  
           
         </main>
         <Footer/>
