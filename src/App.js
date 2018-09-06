@@ -24,14 +24,7 @@ class App extends Component {
       getResponse();
     }
   }
-  getResponse = () => {
-    if (document.getElementById('startLat').innerHTML) {
-      this.getPlaces(document.getElementById('startLat').innerHTML, document.getElementById('startLon').innerHTML);
-      console.log('allowed')
-    } else {
-      console.log('not allowed')
-    }
-  }
+  
   getPlaces = (lat, lon) => {
     axios({
       method: 'GET',
