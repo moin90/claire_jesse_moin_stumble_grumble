@@ -119,3 +119,4 @@ export default App;
 // the user can change the radius at the top if they want
 // when get direction is clicked, the directions API loads and routes us to our Directions component
 // the directions component takes the user's location from the geolocation api and the address from the places api and displays a route on a map
+// add preloader!!
