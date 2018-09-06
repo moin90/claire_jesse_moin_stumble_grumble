@@ -2,11 +2,22 @@ import React, { Component, Fragment } from 'react';
 
 class Results extends Component {
     render() {
+        console.log(this.props.restaurantsArray);
         return (
-            <Fragment>
-                <h1>Results</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ipsum?</p>
-            </Fragment>
+            <section>
+                {this.props.restaurantsArray.map((restaurant) => {
+                    console.log(restaurant.name);
+                    <article>
+                        <h3>{restaurant.name}</h3>
+                            <ul>
+                                <li>{restaurant.rating}</li>
+                                <li>{restaurant.vicinity}</li>
+                        </ul>
+                    </article>
+
+                })}
+
+            </section>
         );
     }
 };
