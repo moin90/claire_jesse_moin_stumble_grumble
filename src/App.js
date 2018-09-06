@@ -35,49 +35,21 @@ class App extends Component {
           location: `${lat} ${lon}`,
           radius: 1000,
           keyword: 'restaurant',
+          opennow: true,
         },
         xmlToJSON: false
       }
     }).then(res => {
-      console.log(res.data.results);
+      // console.log(res.data.results);
+      
     })
           
-        }
+    }
       };
       navigator.geolocation.getCurrentPosition(geoSuccess);
     };
     
   }
-  // getResponse = () => {
-  //   if (document.getElementById('startLat').innerHTML) {
-  //     this.getPlaces(document.getElementById('startLat').innerHTML, document.getElementById('startLon').innerHTML);
-  //     console.log('allowed')
-  //   } else {
-  //     console.log('not allowed')
-  //   }
-  // }
-  // getPlaces = (lat, lon) => {
-  //   axios({
-  //     method: 'GET',
-  //     url: 'https://proxy.hackeryou.com',
-  //     dataResponse: 'json',
-  //     paramsSerializer: function (params) {
-  //       return Qs.stringify(params, { arrayFormat: 'brackets' })
-  //     },
-  //     params: {
-  //       reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
-  //       params: {
-  //         key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
-  //         location: `${lat} ${lon}`,
-  //         radius: 1000,
-  //         keyword: 'restaurants'
-  //       },
-  //       xmlToJSON: false
-  //     }
-  //   }).then(res => {
-  //     console.log(res.data.results);
-  //   })
-  // }
   handleChange = (e) => {
     console.log(e.target.value)
     this.setState({
