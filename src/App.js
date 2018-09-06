@@ -35,15 +35,16 @@ class App extends Component {
                 location: `${lat} ${lon}`,
                 radius: 1000,
                 keyword: 'restaurant',
+                opennow: true,
               },
               xmlToJSON: false
             }
 
           }).then(res => {
             // console.log(res.data.results);
-            this.setState = {
-              restaurants: res.data
-            }
+            this.setState ({
+              restaurants: res.data.results
+            })
           })
         }
       };
@@ -123,7 +124,7 @@ class App extends Component {
             {/* <input type="text" className="search" onChange={this.handleChange} value={this.state.restaurants}/> */}
             <input type="submit"/>
           </form>
-          <Results />
+          <Results restaurantsArray ={this.state.restaurants} />
           <div id="startLat"></div>   
           <div id="startLon"></div>  
           
