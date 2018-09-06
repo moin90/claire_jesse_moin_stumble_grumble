@@ -1,18 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
 import Footer from './components/Footer';
-// import axios from 'axios';
-// import Qs from 'qs';
-import GetPlaces from './components/GetPlaces'
+import axios from 'axios';
+import Qs from 'qs';
+import Results from './components/Results';
 
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      restaurants: [],
-      lat: '',
-      lon: ''
+      restaurants: []
     }
   }
   componentDidMount() {
@@ -22,44 +20,112 @@ class App extends Component {
         startPos = position;
         const lat = document.getElementById('startLat').innerHTML = startPos.coords.latitude;
         const lon = document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-        console.log(lat, lon)
-        if (document.getElementById('startLat').innerHTML) {
-          console.log('allowed')
-          this.setState({
-            lat: lat,
-            lon: lon
+        if (lat != null && lon != null) {
+          axios({
+            method: 'GET',
+            url: 'https://proxy.hackeryou.com',
+            dataResponse: 'json',
+            paramsSerializer: function (params) {
+              return Qs.stringify(params, { arrayFormat: 'brackets' })
+            },
+            params: {
+              reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
+              params: {
+                key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
+                location: `${lat} ${lon}`,
+                radius: 1000,
+                keyword: 'restaurant',
+              },
+              xmlToJSON: false
+            }
+
+          }).then(res => {
+            // console.log(res.data.results);
+            this.setState = {
+              restaurants: res.data
+            }
           })
-        } else {
-          console.log('not allowed')
         }
       };
       navigator.geolocation.getCurrentPosition(geoSuccess);
-    }
-  }
-  
-  handleChange = (e) => {
-    console.log(e.target.value)
-    this.setState({
-      restaurants: e.target.value,
+    };
+
+    axios({
+      method: 'GET',
+      url: 'https://proxy.hackeryou.com',
+      dataResponse: 'json',
+      paramsSerializer: function (params) {
+        return Qs.stringify(params, { arrayFormat: 'brackets' })
+      },
+      params: {
+        reqUrl: 'https://maps.googleapis.com/maps/api/directions/json?',
+        params: {
+          key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
+          origin: '43.648258999999996 -79.3978917',
+          destination: 'CN Tower',
+          mode: 'walking'
+        },
+        xmlToJSON: false
+      }
+    }).then(res => {
+      // console.log(res.data);
+      console.log(res.data.routes[0].legs[0].steps[0]);
     })
-    const userInput = this.state.restaurants;
   }
+  // getResponse = () => {
+  //   if (document.getElementById('startLat').innerHTML) {
+  //     this.getPlaces(document.getElementById('startLat').innerHTML, document.getElementById('startLon').innerHTML);
+  //     console.log('allowed')
+  //   } else {
+  //     console.log('not allowed')
+  //   }
+  // }
+  // getPlaces = (lat, lon) => {
+  //   axios({
+  //     method: 'GET',
+  //     url: 'https://proxy.hackeryou.com',
+  //     dataResponse: 'json',
+  //     paramsSerializer: function (params) {
+  //       return Qs.stringify(params, { arrayFormat: 'brackets' })
+  //     },
+  //     params: {
+  //       reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
+  //       params: {
+  //         key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
+  //         location: `${lat} ${lon}`,
+  //         radius: 1000,
+  //         keyword: 'restaurants'
+  //       },
+  //       xmlToJSON: false
+  //     }
+  //   }).then(res => {
+  //     console.log(res.data.results);
+  //   })
+  // }
+  // handleChange = (e) => {
+  //   console.log(e.target.value)
+  //   this.setState({
+  //     restaurants: e.target.value,
+  //   })
+  //   const userInput = this.state.restaurants;
+  // }
+
   handleSubmit = (e) => {
     e.preventDefault();
-
   }
+
   render() {
     return (
       <Fragment>
         <h2>StumbleGrumble</h2>
         <main className="App">
           <form onSubmit={this.handleSubmit}>
-            <input type="text" className="search" onChange={this.handleChange} value={this.state.restaurants}/>
+            {/* <input type="text" className="search" onChange={this.handleChange} value={this.state.restaurants}/> */}
             <input type="submit"/>
-          </form>  
+          </form>
+          <Results />
           <div id="startLat"></div>   
-          <div id="startLon"></div> 
-          <GetPlaces lat={this.state.lat} lon={this.state.lon}/>  
+          <div id="startLon"></div>  
           
         </main>
         <Footer/>
@@ -79,3 +145,4 @@ export default App;
 // the user can change the radius at the top if they want
 // when get direction is clicked, the directions API loads and routes us to our Directions component
 // the directions component takes the user's location from the geolocation api and the address from the places api and displays a route on a map
+// add preloader!!
