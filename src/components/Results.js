@@ -4,17 +4,13 @@ class Results extends Component {
 
     // 
 
-    getLocation = () => {
-        console.log('you clicked me')
-    }
-
     render() {
-        console.log(this.props.restaurantsArray);
+        // console.log(this.props.restaurantsArray);
 
         return (
             <section>
                 {this.props.restaurantsArray.map((restaurant) => {
-                    console.log(restaurant.name);
+                    // console.log(restaurant.name);
                     return (
                         <article key={restaurant.place_id}>
                             <h3>{restaurant.name}</h3>
@@ -24,7 +20,7 @@ class Results extends Component {
                                 <li>{restaurant.price_level}</li>
                             </ul>
 
-                            <button onClick={this.getLocation}>Get Directions</button>
+                            <button onClick={() => {this.props.getDestination(restaurant.vicinity)}}>Get Directions</button>
 
                         </article>
                     )

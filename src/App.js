@@ -12,7 +12,9 @@ class App extends Component {
     this.state = {
       restaurants: [],
       lat: '',
-      lon: ''
+      lon: '',
+      destination: ''
+
     }
   }
   componentDidMount() {
@@ -54,29 +56,39 @@ class App extends Component {
       };
       navigator.geolocation.getCurrentPosition(geoSuccess);
     };
-
-    axios({
-      method: 'GET',
-      url: 'https://proxy.hackeryou.com',
-      dataResponse: 'json',
-      paramsSerializer: function (params) {
-        return Qs.stringify(params, { arrayFormat: 'brackets' })
-      },
-      params: {
-        reqUrl: 'https://maps.googleapis.com/maps/api/directions/json?',
-        params: {
-          key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
-          origin: `${this.state.lat} ${this.state.lon}`,
-          destination: '',
-          mode: 'walking'
-        },
-        xmlToJSON: false
-      }
-    }).then(res => {
-      // console.log(res.data);
-      console.log(res.data.routes[0].legs[0].steps[0]);
-    })
   }
+  getDestination = (destination) => {
+    this.setState({
+      destination: destination
+    }, () => {
+      axios({
+        method: 'GET',
+        url: 'https://proxy.hackeryou.com',
+        dataResponse: 'json',
+        paramsSerializer: function (params) {
+          return Qs.stringify(params, { arrayFormat: 'brackets' })
+        },
+        params: {
+          reqUrl: 'https://maps.googleapis.com/maps/api/directions/json?',
+          params: {
+            key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
+            origin: `${this.state.lat} ${this.state.lon}`,
+            destination: `${this.state.destination}`,
+            mode: 'walking'
+          },
+          xmlToJSON: false
+        }
+      }).then(res => {
+        console.log(res.data);
+        // console.log(res);
+      })
+
+      // console.log(destination);
+    })
+    
+    
+  }
+
 
   // handleSubmit = (e) => {
   //   e.preventDefault();
@@ -92,7 +104,7 @@ class App extends Component {
             {/* <input type="text" className="search" onChange={this.handleChange} value={this.state.restaurants}/> */}
             <input type="submit"/>
           </form>
-          <Results restaurantsArray={this.state.restaurants} />
+          <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} />
           <div id="startLat"></div>   
           <div id="startLon"></div>  
           
