@@ -1,59 +1,42 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
 import Footer from './components/Footer';
-import axios from 'axios';
-import Qs from 'qs';
+// import axios from 'axios';
+// import Qs from 'qs';
+import GetPlaces from './components/GetPlaces'
 
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      restaurants: []
+      restaurants: [],
+      lat: '',
+      lon: ''
     }
   }
   componentDidMount() {
-    window.onload = function () {
+    window.onload = () => {
       var startPos;
-      var geoSuccess = function (position) {
+      var geoSuccess = (position) => {
         startPos = position;
-        document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-        document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+        const lat = document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+        const lon = document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+        console.log(lat, lon)
+        if (document.getElementById('startLat').innerHTML) {
+          console.log('allowed')
+          this.setState({
+            lat: lat,
+            lon: lon
+          })
+        } else {
+          console.log('not allowed')
+        }
       };
       navigator.geolocation.getCurrentPosition(geoSuccess);
-      getResponse();
     }
   }
-  getResponse = () => {
-    if (document.getElementById('startLat').innerHTML) {
-      this.getPlaces(document.getElementById('startLat').innerHTML, document.getElementById('startLon').innerHTML);
-      console.log('allowed')
-    } else {
-      console.log('not allowed')
-    }
-  }
-  getPlaces = (lat, lon) => {
-    axios({
-      method: 'GET',
-      url: 'https://proxy.hackeryou.com',
-      dataResponse: 'json',
-      paramsSerializer: function (params) {
-        return Qs.stringify(params, { arrayFormat: 'brackets' })
-      },
-      params: {
-        reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
-        params: {
-          key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
-          location: `${lat} ${lon}`,
-          radius: 1000,
-          keyword: 'restaurants'
-        },
-        xmlToJSON: false
-      }
-    }).then(res => {
-      console.log(res.data.results);
-    })
-  }
+  
   handleChange = (e) => {
     console.log(e.target.value)
     this.setState({
@@ -75,7 +58,8 @@ class App extends Component {
             <input type="submit"/>
           </form>  
           <div id="startLat"></div>   
-          <div id="startLon"></div>   
+          <div id="startLon"></div> 
+          <GetPlaces lat={this.state.lat} lon={this.state.lon}/>  
           
         </main>
         <Footer/>
