@@ -16,7 +16,7 @@ class Results extends Component {
         return (
             <section>
                 {this.props.restaurantsArray.map((restaurant) => {
-                    console.log(restaurant.name);
+                    // console.log(restaurant.name);
                     return (
                         <article key={restaurant.place_id}>
                             <h3>{restaurant.name}</h3>
@@ -26,7 +26,7 @@ class Results extends Component {
                                 <li>{this.priceInDollars(restaurant.price_level)}</li>
                             </ul>
 
-                            <button onClick={this.getLocation}>Get Directions</button>
+                            <button onClick={() => {this.props.getDestination(restaurant.vicinity)}}>Get Directions</button>
 
                         </article>
                     )
