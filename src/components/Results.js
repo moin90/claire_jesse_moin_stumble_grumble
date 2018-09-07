@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 
 class Results extends Component {
+    constructor(){
+        super();
+        this.state = {
+            destination:''
+        }
+    }
+    destination = (destination) => {
+        this.setState({
+            destination:destination,
+        })
+    }
+        
     getLocation = () => {
         console.log('you clicked me')
     }
@@ -12,23 +24,32 @@ class Results extends Component {
             return 'Price: N/A'
         }
     }
+    getDirections = (address) => {
+        console.log(this.props);
+        this.props.getDestination(address)
+    }
     render() {
         return (
             <section>
                 {this.props.restaurantsArray.map((restaurant) => {
                     // console.log(restaurant.name);
                     return (
-                        <article key={restaurant.place_id}>
-                            <h3>{restaurant.name}</h3>
-                            <ul>
-                                <li>{restaurant.vicinity}</li>
-                                <li>Rating: {restaurant.rating}/5</li>
-                                <li>{this.priceInDollars(restaurant.price_level)}</li>
-                            </ul>
+                        <React.Fragment>
+                            <article key={restaurant.place_id}>
+                                <h3>{restaurant.name}</h3>
+                                <ul>
+                                    <li>{restaurant.vicinity}</li>
+                                    <li>Rating: {restaurant.rating}/5</li>
+                                    <li>{this.priceInDollars(restaurant.price_level)}</li>
+                                </ul>
+    
+                                <button onClick={() => {this.getDirections(restaurant.vicinity)}}>Get Directions</button>
+    
+    
+                            </article>
+                
 
-                            <button onClick={() => {this.props.getDestination(restaurant.vicinity)}}>Get Directions</button>
-
-                        </article>
+                        </React.Fragment>
                     )
                 })}
 
