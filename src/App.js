@@ -26,38 +26,40 @@ class App extends Component {
         startPos = position;
         const lat = document.getElementById('startLat').innerHTML = startPos.coords.latitude;
         const lon = document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-        console.log(lat)
-        if (lat != null && lon != null ) {
-          axios({
-            method: 'GET',
-            url: 'https://proxy.hackeryou.com',
-            dataResponse: 'json',
-            paramsSerializer: function (params) {
-              return Qs.stringify(params, { arrayFormat: 'brackets' })
-            },
+        axios({
+          method: 'GET',
+          url: 'https://proxy.hackeryou.com',
+          dataResponse: 'json',
+          paramsSerializer: function (params) {
+            return Qs.stringify(params, { arrayFormat: 'brackets' })
+          },
+          params: {
+            reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
             params: {
-              reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
-              params: {
-                key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
-                location: `${lat} ${lon}`,
-                radius: 1000,
-                keyword: 'restaurant',
-                opennow: true,
-              },
-              xmlToJSON: false
-            }
-          }).then(res => {
-            // console.log(res.data.results);
-            this.setState ({
-              restaurants: res.data.results,
-              lat: lat,
-              lon: lon
-            })
+              key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
+              location: `${lat} ${lon}`,
+              radius: 1000,
+              keyword: 'restaurant',
+              opennow: true,
+            },
+            xmlToJSON: false
+          }
+
+        }).then(res => {
+          // console.log(res.data.results);
+          this.setState ({
+            restaurants: res.data.results,
+            lat: lat,
+            lon: lon
           })
-        }
-      };
-      navigator.geolocation.getCurrentPosition(geoSuccess);
-    }
+        })
+      } // end of geoSuccess
+      var geoError = function (error) {
+        console.log('Error occurred. Error code: ' + error.code);
+        document.querySelector('.hide').classList.remove('hide');
+      } // end of geoError
+      navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+    };
   // }
   getDestination = (destination) => {
     this.setState({

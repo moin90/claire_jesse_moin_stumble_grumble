@@ -1,5 +1,5 @@
 .hide {
-  border: 1px solid red; }
+  display: none; }
 
 .App {
   text-align: center; }
