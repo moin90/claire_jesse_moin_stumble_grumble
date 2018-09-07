@@ -32,10 +32,10 @@ class Results extends Component {
         return (
             <section>
                 {this.props.restaurantsArray.map((restaurant) => {
-                    // console.log(restaurant.name);
+                    // console.log(restaurant.place_id);
                     return (
-                        <React.Fragment>
-                            <article key={restaurant.place_id}>
+                        <section key={restaurant.place_id}>
+                            <article>
                                 <h3>{restaurant.name}</h3>
                                 <ul>
                                     <li>{restaurant.vicinity}</li>
@@ -44,12 +44,12 @@ class Results extends Component {
                                 </ul>
     
                                 <button onClick={() => {this.getDirections(restaurant.vicinity)}}>Get Directions</button>
-    
-    
                             </article>
+
+                        </section>
                 
 
-                        </React.Fragment>
+
                     )
                 })}
 
