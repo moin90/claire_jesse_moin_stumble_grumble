@@ -1,9 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
-import Footer from './components/Footer';
 import axios from 'axios';
 import Qs from 'qs';
+
+// COMPONENTS
 import Results from './components/Results';
+import DestinationMap from './components/DestinationMap';
+import Footer from './components/Footer';
 
 
 class App extends Component {
@@ -18,7 +21,7 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    window.onload = () => {
+    // window.onload = () => {
       var startPos;
       var geoSuccess = (position) => {
         startPos = position;
@@ -56,7 +59,7 @@ class App extends Component {
       };
       navigator.geolocation.getCurrentPosition(geoSuccess);
     };
-  }
+  // }
   getDestination = (destination) => {
     this.setState({
       destination: destination
@@ -79,22 +82,15 @@ class App extends Component {
           xmlToJSON: false
         }
       }).then(res => {
-        console.log(res.data);
-        // console.log(res);
+        this.props.history.push({
+          pathname: '/results/directions',
+          destination:this.state.destination,
+        })
       })
-
-      // console.log(destination);
     })
     
     
   }
-
-
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  // }
-
-
   render() {
     return (
       <Fragment>
@@ -104,12 +100,14 @@ class App extends Component {
             {/* <input type="text" className="search" onChange={this.handleChange} value={this.state.restaurants}/> */}
             <input type="submit"/>
           </form>
-          <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} />
+          <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} destination={this.state.destination} />
           <div id="startLat"></div>   
           <div id="startLon"></div>  
           
         </main>
+        {/* <DestinationMap destination={this.state.destination}/> */}
         <Footer/>
+        
 
       </Fragment>
     );
