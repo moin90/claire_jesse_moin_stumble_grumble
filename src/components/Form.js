@@ -9,7 +9,7 @@ class Form extends Component {
     }
     render() {
         return (
-            <form className='hide' id="form" onSubmit={this.handleSubmit}>
+            <form className="hide" onSubmit={this.handleSubmit}>
                 <label htmlFor="search"></label>
                 <input type="search" id="search" onChange={this.handleChange}/>
                 <input type="submit"/>
