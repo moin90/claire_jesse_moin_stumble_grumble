@@ -27,7 +27,8 @@ class App extends Component {
         startPos = position;
         const lat = document.getElementById('startLat').innerHTML = startPos.coords.latitude;
         const lon = document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-        if (lat != null && lon != null) {
+      
+        // if (lat !== null && lon !== null) {
           axios({
             method: 'GET',
             url: 'https://proxy.hackeryou.com',
@@ -55,15 +56,14 @@ class App extends Component {
               lon: lon
             })
           })
-        } else {
-            // ask user for location
-            // handle submit
-            // collect
-            const form = document.getElementsByClassName('hide');
-            form.classList.remove('hide');
-        }
+        // }
+          
       };
-      navigator.geolocation.getCurrentPosition(geoSuccess);
+      var geoError = function (error) {
+        console.log('Error occurred. Error code: ' + error.code);
+        document.querySelector('.hide').classList.remove('hide');
+      }
+      navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
     };
   // }
   getDestination = (destination) => {
