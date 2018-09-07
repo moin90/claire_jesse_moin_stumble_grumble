@@ -6,6 +6,7 @@ import Qs from 'qs';
 // COMPONENTS
 import Results from './components/Results';
 import Footer from './components/Footer';
+import Form from './components/Form';
 
 
 class App extends Component {
@@ -15,7 +16,8 @@ class App extends Component {
       restaurants: [],
       lat: '',
       lon: '',
-      destination: ''
+      destination: '',
+      testAddress: '483 Queen St West'
 
     }
   }
@@ -53,6 +55,12 @@ class App extends Component {
               lon: lon
             })
           })
+        } else {
+            // ask user for location
+            // handle submit
+            // collect
+            const form = document.getElementsByClassName('hide');
+            form.classList.remove('hide');
         }
       };
       navigator.geolocation.getCurrentPosition(geoSuccess);
@@ -94,10 +102,10 @@ class App extends Component {
       <Fragment>
         <h2>StumbleGrumble</h2>
         <main className="App">
+          <Form />
           <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} destination={this.state.destination} />
           <div id="startLat"></div>   
-          <div id="startLon"></div>  
-          
+          <div id="startLon"></div> 
         </main>
         <Footer/>
         
