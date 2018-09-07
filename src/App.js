@@ -3,23 +3,29 @@ import './App.css';
 import Footer from './components/Footer';
 import axios from 'axios';
 import Qs from 'qs';
+import Results from './components/Results';
 
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      restaurants: []
+      restaurants: [],
+      lat: '',
+      lon: '',
+      destination: ''
+
     }
   }
   componentDidMount() {
-    window.onload = function () {
+    window.onload = () => {
       var startPos;
-      var geoSuccess = function (position) {
+      var geoSuccess = (position) => {
         startPos = position;
         const lat = document.getElementById('startLat').innerHTML = startPos.coords.latitude;
         const lon = document.getElementById('startLon').innerHTML = startPos.coords.longitude;
         if (lat != null && lon != null) {
+<<<<<<< HEAD
          
     axios({
       method: 'GET',
@@ -43,64 +49,90 @@ class App extends Component {
       console.log(res.data.results);
     })
           
+=======
+          axios({
+            method: 'GET',
+            url: 'https://proxy.hackeryou.com',
+            dataResponse: 'json',
+            paramsSerializer: function (params) {
+              return Qs.stringify(params, { arrayFormat: 'brackets' })
+            },
+            params: {
+              reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
+              params: {
+                key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
+                location: `${lat} ${lon}`,
+                radius: 1000,
+                keyword: 'restaurant',
+                opennow: true,
+              },
+              xmlToJSON: false
+            }
+
+          }).then(res => {
+            // console.log(res.data.results);
+            this.setState ({
+              restaurants: res.data.results,
+              lat: lat,
+              lon: lon
+            })
+          })
+>>>>>>> bb3d59474cdc2eb9a9d845ded77021c52c8eaaf3
         }
       };
       navigator.geolocation.getCurrentPosition(geoSuccess);
     };
+  }
+  getDestination = (destination) => {
+    this.setState({
+      destination: destination
+    }, () => {
+      axios({
+        method: 'GET',
+        url: 'https://proxy.hackeryou.com',
+        dataResponse: 'json',
+        paramsSerializer: function (params) {
+          return Qs.stringify(params, { arrayFormat: 'brackets' })
+        },
+        params: {
+          reqUrl: 'https://maps.googleapis.com/maps/api/directions/json?',
+          params: {
+            key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
+            origin: `${this.state.lat} ${this.state.lon}`,
+            destination: `${this.state.destination}`,
+            mode: 'walking'
+          },
+          xmlToJSON: false
+        }
+      }).then(res => {
+        console.log(res.data);
+        // console.log(res);
+      })
+
+      // console.log(destination);
+    })
+    
     
   }
-  // getResponse = () => {
-  //   if (document.getElementById('startLat').innerHTML) {
-  //     this.getPlaces(document.getElementById('startLat').innerHTML, document.getElementById('startLon').innerHTML);
-  //     console.log('allowed')
-  //   } else {
-  //     console.log('not allowed')
-  //   }
-  // }
-  // getPlaces = (lat, lon) => {
-  //   axios({
-  //     method: 'GET',
-  //     url: 'https://proxy.hackeryou.com',
-  //     dataResponse: 'json',
-  //     paramsSerializer: function (params) {
-  //       return Qs.stringify(params, { arrayFormat: 'brackets' })
-  //     },
-  //     params: {
-  //       reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
-  //       params: {
-  //         key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
-  //         location: `${lat} ${lon}`,
-  //         radius: 1000,
-  //         keyword: 'restaurants'
-  //       },
-  //       xmlToJSON: false
-  //     }
-  //   }).then(res => {
-  //     console.log(res.data.results);
-  //   })
-  // }
-  handleChange = (e) => {
-    console.log(e.target.value)
-    this.setState({
-      restaurants: e.target.value,
-    })
-    const userInput = this.state.restaurants;
-  }
-  handleSubmit = (e) => {
-    e.preventDefault();
 
-  }
+
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  // }
+
+
   render() {
     return (
       <Fragment>
         <h2>StumbleGrumble</h2>
         <main className="App">
           <form onSubmit={this.handleSubmit}>
-            <input type="text" className="search" onChange={this.handleChange} value={this.state.restaurants}/>
+            {/* <input type="text" className="search" onChange={this.handleChange} value={this.state.restaurants}/> */}
             <input type="submit"/>
-          </form>  
+          </form>
+          <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} />
           <div id="startLat"></div>   
-          <div id="startLon"></div>   
+          <div id="startLon"></div>  
           
         </main>
         <Footer/>
