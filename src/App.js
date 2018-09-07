@@ -1,15 +1,31 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
-import Footer from './components/Footer';
 import axios from 'axios';
 import Qs from 'qs';
+<<<<<<< HEAD
+=======
+
+// COMPONENTS
+import Results from './components/Results';
+import Footer from './components/Footer';
+import Form from './components/Form';
+>>>>>>> 088057ac236ab133dd9a5ac22292f72d16374482
 
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
+<<<<<<< HEAD
       restaurants: []
+=======
+      restaurants: [],
+      lat: '',
+      lon: '',
+      destination: '',
+      testAddress: '483 Queen St West'
+
+>>>>>>> 088057ac236ab133dd9a5ac22292f72d16374482
     }
   }
   componentDidMount() {
@@ -18,6 +34,7 @@ class App extends Component {
         startPos = position;
         const lat = document.getElementById('startLat').innerHTML = startPos.coords.latitude;
         const lon = document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+<<<<<<< HEAD
         if (lat != null && lon != null) {
          
     axios({
@@ -91,11 +108,80 @@ class App extends Component {
     e.preventDefault();
 
   }
+=======
+        axios({
+          method: 'GET',
+          url: 'https://proxy.hackeryou.com',
+          dataResponse: 'json',
+          paramsSerializer: function (params) {
+            return Qs.stringify(params, { arrayFormat: 'brackets' })
+          },
+          params: {
+            reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
+            params: {
+              key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
+              location: `${lat} ${lon}`,
+              radius: 1000,
+              keyword: 'restaurant',
+              opennow: true,
+            },
+            xmlToJSON: false
+          }
+
+        }).then(res => {
+          // console.log(res.data.results);
+          this.setState ({
+            restaurants: res.data.results,
+            lat: lat,
+            lon: lon
+          })
+        })
+      } // end of geoSuccess
+      var geoError = function (error) {
+        console.log('Error occurred. Error code: ' + error.code);
+        document.querySelector('.hide').classList.remove('hide');
+      } // end of geoError
+      navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+    };
+  // }
+  getDestination = (destination) => {
+    this.setState({
+      destination: destination
+    }, () => {
+      axios({
+        method: 'GET',
+        url: 'https://proxy.hackeryou.com',
+        dataResponse: 'json',
+        paramsSerializer: function (params) {
+          return Qs.stringify(params, { arrayFormat: 'brackets' })
+        },
+        params: {
+          reqUrl: 'https://maps.googleapis.com/maps/api/directions/json?',
+          params: {
+            key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
+            origin: `${this.state.lat} ${this.state.lon}`,
+            destination: `${this.state.destination}`,
+            mode: 'walking'
+          },
+          xmlToJSON: false
+        }
+      }).then(res => {
+        this.props.history.push({
+          pathname: '/results/directions',
+          destination:this.state.destination,
+        })
+      })
+    })
+    
+    
+  }
+>>>>>>> 088057ac236ab133dd9a5ac22292f72d16374482
   render() {
     return (
       <Fragment>
         <h2>StumbleGrumble</h2>
         <main className="App">
+<<<<<<< HEAD
           <form onSubmit={this.handleSubmit}>
             <input type="text" className="search" onChange={this.handleChange} value={this.state.restaurants}/>
             <input type="submit"/>
@@ -103,8 +189,15 @@ class App extends Component {
           <div id="startLat"></div>   
           <div id="startLon"></div>   
           
+=======
+          <Form />
+          <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} destination={this.state.destination} />
+          <div id="startLat"></div>   
+          <div id="startLon"></div> 
+>>>>>>> 088057ac236ab133dd9a5ac22292f72d16374482
         </main>
         <Footer/>
+        
 
       </Fragment>
     );
@@ -122,3 +215,5 @@ export default App;
 // when get direction is clicked, the directions API loads and routes us to our Directions component
 // the directions component takes the user's location from the geolocation api and the address from the places api and displays a route on a map
 // add preloader!!
+
+// find a way to re-route user to Results.js on refresh of DestinationMap.js
