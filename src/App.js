@@ -5,7 +5,6 @@ import Qs from 'qs';
 
 // COMPONENTS
 import Results from './components/Results';
-import DestinationMap from './components/DestinationMap';
 import Footer from './components/Footer';
 
 
@@ -21,7 +20,6 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    // window.onload = () => {
       var startPos;
       var geoSuccess = (position) => {
         startPos = position;
@@ -96,16 +94,11 @@ class App extends Component {
       <Fragment>
         <h2>StumbleGrumble</h2>
         <main className="App">
-          <form onSubmit={this.handleSubmit}>
-            {/* <input type="text" className="search" onChange={this.handleChange} value={this.state.restaurants}/> */}
-            <input type="submit"/>
-          </form>
           <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} destination={this.state.destination} />
           <div id="startLat"></div>   
           <div id="startLon"></div>  
           
         </main>
-        {/* <DestinationMap destination={this.state.destination}/> */}
         <Footer/>
         
 
@@ -125,3 +118,5 @@ export default App;
 // when get direction is clicked, the directions API loads and routes us to our Directions component
 // the directions component takes the user's location from the geolocation api and the address from the places api and displays a route on a map
 // add preloader!!
+
+// find a way to re-route user to Results.js on refresh of DestinationMap.js
