@@ -1,6 +1,9 @@
 .hide {
   display: none; }
 
+.startLat, .startLon {
+  display: none; }
+
 .App {
   text-align: center; }
 
