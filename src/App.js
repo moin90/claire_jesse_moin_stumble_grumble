@@ -44,7 +44,6 @@ class App extends Component {
               },
               xmlToJSON: false
             }
-
           }).then(res => {
             // console.log(res.data.results);
             this.setState ({
