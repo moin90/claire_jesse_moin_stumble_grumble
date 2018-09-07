@@ -67,7 +67,7 @@ class App extends Component {
         params: {
           key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
           origin: `${this.state.lat} ${this.state.lon}`,
-          destination: '',
+          destination: '290 Bremner Blvd',
           mode: 'walking'
         },
         xmlToJSON: false
@@ -81,7 +81,7 @@ class App extends Component {
   // handleSubmit = (e) => {
   //   e.preventDefault();
   // }
-  
+
 
   render() {
     return (

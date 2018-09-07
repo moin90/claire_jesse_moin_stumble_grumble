@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 
 class Results extends Component {
-
-    // 
-
     getLocation = () => {
         console.log('you clicked me')
     }
-
+    priceInDollars = (price) => {
+        let dollarString = '$'
+        if (price > 0) {
+            return dollarString.repeat(price);
+        } else {
+            return 'Price: N/A'
+        }
+    }
     render() {
-        console.log(this.props.restaurantsArray);
-
         return (
             <section>
                 {this.props.restaurantsArray.map((restaurant) => {
@@ -21,7 +23,7 @@ class Results extends Component {
                             <ul>
                                 <li>{restaurant.vicinity}</li>
                                 <li>Rating: {restaurant.rating}/5</li>
-                                <li>{restaurant.price_level}</li>
+                                <li>{this.priceInDollars(restaurant.price_level)}</li>
                             </ul>
 
                             <button onClick={this.getLocation}>Get Directions</button>
