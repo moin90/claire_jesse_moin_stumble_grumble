@@ -6,6 +6,7 @@ import Qs from 'qs';
 // COMPONENTS
 import Results from './components/Results';
 import Footer from './components/Footer';
+import Form from './components/Form';
 
 
 class App extends Component {
@@ -25,7 +26,8 @@ class App extends Component {
         startPos = position;
         const lat = document.getElementById('startLat').innerHTML = startPos.coords.latitude;
         const lon = document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-        if (lat != false && lon != false) {
+        console.log(lat)
+        if (lat != null && lon != null ) {
           axios({
             method: 'GET',
             url: 'https://proxy.hackeryou.com',
@@ -52,13 +54,10 @@ class App extends Component {
               lon: lon
             })
           })
-        } else {
-          const form = document.getElementById('form');
-          form.classList.remove('hide');
         }
       };
       navigator.geolocation.getCurrentPosition(geoSuccess);
-    };
+    }
   // }
   getDestination = (destination) => {
     this.setState({
@@ -96,6 +95,7 @@ class App extends Component {
       <Fragment>
         <h2>StumbleGrumble</h2>
         <main className="App">
+          <Form/>
           <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} destination={this.state.destination} />
           <div id="startLat"></div>   
           <div id="startLon"></div>  
