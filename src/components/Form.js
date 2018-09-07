@@ -10,17 +10,12 @@ class Form extends Component {
         }
     }
     handleChange = (e) => {
-        console.log(e.target.value);
         this.setState({
            originAddress: e.target.value 
         })
-        //, () => {
-        //     this.props.getUserInput(this.state.originAddress)
-        // })
         
     }
     handleSubmit = (e) => {
-        console.log(this.state.originAddress)
         e.preventDefault()
         axios({
             method: 'GET',
@@ -30,20 +25,21 @@ class Form extends Component {
                 return Qs.stringify(params, { arrayFormat: 'brackets' })
             },
             params: {
-                reqUrl: 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json',
+                reqUrl: 'https://maps.googleapis.com/maps/api/place/textsearch/json',
                 params: {
                     key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
-                    input: '483 queen st west',
-                    inputType: 'textquery',
+                    query: this.state.originAddress,
                     radius: 1000,
-                    // keyword: 'restaurant',
-                    // opennow: true,
+                    type: 'restaurant',
+                    open_now: true,
                 },
                 xmlToJSON: false
             }
         }).then(res => {
-            console.log(res.data)
-        })
+            console.log(res.data.results)
+            this.props.getUserInput(res.data.results)
+            })
+        
     }
     render() {
         return (
