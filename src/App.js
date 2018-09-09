@@ -86,6 +86,7 @@ class App extends Component {
           pathname: '/results/directions',
           destination:this.state.destination,
         })
+        console.log(res);
       })
     })  
   }

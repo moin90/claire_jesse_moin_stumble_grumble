@@ -13,7 +13,6 @@ class Form extends Component {
         this.setState({
            originAddress: e.target.value 
         })
-        
     }
     handleSubmit = (e) => {
         e.preventDefault()
