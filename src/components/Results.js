@@ -25,31 +25,31 @@ class Results extends Component {
         }
     }
     getDirections = (address) => {
-        console.log(this.props);
+        // console.log(this.props);
         this.props.getDestination(address)
     }
     render() {
         return (
             <section>
                 {this.props.restaurantsArray.map((restaurant) => {
-                    // console.log(restaurant.place_id);
+                    // console.log(restaurant.name);
                     return (
                         <section key={restaurant.place_id}>
                             <article>
                                 <h3>{restaurant.name}</h3>
                                 <ul>
-                                    <li>{restaurant.vicinity}</li>
+                                    <li>{restaurant.vicinity != undefined ? restaurant.vicinity : restaurant.formatted_address}</li>
                                     <li>Rating: {restaurant.rating}/5</li>
                                     <li>{this.priceInDollars(restaurant.price_level)}</li>
                                 </ul>
     
-                                <button onClick={() => {this.getDirections(restaurant.vicinity)}}>Get Directions</button>
+                                <button onClick={() => {restaurant.vicinity != undefined ? this.getDirections(restaurant.vicinity) : this.getDirections(restaurant.formatted_address)}}>Get Directions</button>
+    
+    
                             </article>
-
-                        </section>
                 
 
-
+                        </section>
                     )
                 })}
 

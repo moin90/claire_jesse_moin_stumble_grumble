@@ -84,6 +84,7 @@ class App extends Component {
           xmlToJSON: false
         }
       }).then(res => {
+        console.log(res)
         this.props.history.push({
           pathname: '/results/directions',
           destination:this.state.destination,
@@ -91,9 +92,9 @@ class App extends Component {
       })
     })  
   }
-  getUserInput = (originAddress) => {
+  getUserInput = (restaurantsArray) => {
     this.setState({
-      originAddress: originAddress
+      restaurants: restaurantsArray
     })
   }
   render() {

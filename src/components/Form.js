@@ -10,13 +10,9 @@ class Form extends Component {
         }
     }
     handleChange = (e) => {
-        console.log(e.target.value);
         this.setState({
            originAddress: e.target.value 
         })
-        //, () => {
-        //     this.props.getUserInput(this.state.originAddress)
-        // })
         
     }
     handleSubmit = (e) => {
@@ -42,7 +38,9 @@ class Form extends Component {
             }
         }).then(res => {
             console.log(res.data.results)
-        })
+            this.props.getUserInput(res.data.results)
+            })
+        
     }
     render() {
         return (
