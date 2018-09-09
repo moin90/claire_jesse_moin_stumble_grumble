@@ -37,7 +37,7 @@ class App extends Component {
           params: {
             reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
             params: {
-              key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
+              key: 'AIzaSyDZWNrRFSs1j2Mjhfaj8KHbQI91VuACATk',
               location: `${lat} ${lon}`,
               radius: 1000,
               keyword: 'restaurant',
@@ -49,8 +49,7 @@ class App extends Component {
         }).then(res => {
           this.setState ({
             restaurants: res.data.results,
-            lat: lat,
-            lon: lon
+            originAddress: `${lat} ${lon}`,
           })
         })
       } // end of geoSuccess
@@ -76,13 +75,14 @@ class App extends Component {
           reqUrl: 'https://maps.googleapis.com/maps/api/directions/json?',
           params: {
             key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
-            origin: `${this.state.lat} ${this.state.lon}`,
+            origin: `${this.state.originAddress}`,
             destination: `${this.state.destination}`,
             mode: 'walking'
           },
           xmlToJSON: false
         }
       }).then(res => {
+        console.log(res)
         this.props.history.push({
           pathname: '/results/directions',
           destination:this.state.destination,
@@ -95,12 +95,17 @@ class App extends Component {
       restaurants: restaurantsArray
     })
   }
+  getOriginAddress = (originAddress) => {
+    this.setState({
+      originAddress: originAddress
+    })
+  }
   render() {
     return (
       <Fragment>
         <h2>StumbleGrumble</h2>
         <main className="App">
-          <Form getUserInput={this.getUserInput}/>
+          <Form getUserInput={this.getUserInput} getOriginAddress={this.getOriginAddress}/>
           <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} destination={this.state.destination} />
           <div id="startLat"></div>   
           <div id="startLon"></div> 
