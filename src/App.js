@@ -90,9 +90,9 @@ class App extends Component {
       })
     })  
   }
-  getUserInput = (originAddress) => {
+  getUserInput = (restaurantsArray) => {
     this.setState({
-      originAddress: originAddress
+      restaurants: restaurantsArray
     })
   }
   render() {
