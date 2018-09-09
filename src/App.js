@@ -82,7 +82,7 @@ class App extends Component {
           xmlToJSON: false
         }
       }).then(res => {
-        console.log(res)
+        console.log(res.data.routes[0].legs[0].steps)
         this.props.history.push({
           pathname: '/results/directions',
           destination:this.state.destination,
