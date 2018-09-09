@@ -19,6 +19,7 @@ class Form extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault()
+        console.log(this.state.originAddress)
         axios({
             method: 'GET',
             url: 'https://proxy.hackeryou.com',
