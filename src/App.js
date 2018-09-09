@@ -18,6 +18,7 @@ class App extends Component {
       lon: '',
       destination: '',
       originAddress: '',
+      directions: '',
 
     }
   }
@@ -51,6 +52,7 @@ class App extends Component {
             restaurants: res.data.results,
             originAddress: `${lat} ${lon}`,
           })
+          // console.log(res.data.results)
         })
       } // end of geoSuccess
       var geoError = function (error) {
@@ -82,10 +84,14 @@ class App extends Component {
           xmlToJSON: false
         }
       }).then(res => {
-        console.log(res.data.routes[0].legs[0].steps)
+        // console.log(res.data.routes[0].legs[0].steps)
+        this.setState({
+          directions: res.data.routes[0].legs[0].steps
+        })
         this.props.history.push({
           pathname: '/results/directions',
           destination:this.state.destination,
+          directions:this.state.directions,
         })
       })
     })  
@@ -108,7 +114,8 @@ class App extends Component {
           <Form getUserInput={this.getUserInput} getOriginAddress={this.getOriginAddress}/>
           <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} destination={this.state.destination} />
           <div id="startLat"></div>   
-          <div id="startLon"></div> 
+          <div id="startLon"></div>  
+          
         </main>
         <Footer/>
         
