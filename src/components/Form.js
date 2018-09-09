@@ -20,8 +20,8 @@ class Form extends Component {
         
     }
     handleSubmit = (e) => {
-        console.log(this.state.originAddress)
         e.preventDefault()
+        console.log(this.state.originAddress)
         axios({
             method: 'GET',
             url: 'https://proxy.hackeryou.com',
@@ -30,19 +30,18 @@ class Form extends Component {
                 return Qs.stringify(params, { arrayFormat: 'brackets' })
             },
             params: {
-                reqUrl: 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json',
+                reqUrl: 'https://maps.googleapis.com/maps/api/place/textsearch/json',
                 params: {
                     key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
-                    input: '483 queen st west',
-                    inputType: 'textquery',
+                    query: this.state.originAddress,
                     radius: 1000,
-                    // keyword: 'restaurant',
-                    // opennow: true,
+                    type: 'restaurant',
+                    open_now: true,
                 },
                 xmlToJSON: false
             }
         }).then(res => {
-            console.log(res.data)
+            console.log(res.data.results)
         })
     }
     render() {

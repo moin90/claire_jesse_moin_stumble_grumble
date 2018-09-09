@@ -52,6 +52,7 @@ class App extends Component {
             lat: lat,
             lon: lon
           })
+          console.log(res.data.results)
         })
       } // end of geoSuccess
       var geoError = function (error) {
