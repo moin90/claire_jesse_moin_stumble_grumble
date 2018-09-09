@@ -2,30 +2,22 @@ import React, { Component, Fragment } from 'react';
 import './App.css';
 import axios from 'axios';
 import Qs from 'qs';
-<<<<<<< HEAD
-=======
-
 // COMPONENTS
 import Results from './components/Results';
 import Footer from './components/Footer';
 import Form from './components/Form';
->>>>>>> 088057ac236ab133dd9a5ac22292f72d16374482
 
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-<<<<<<< HEAD
-      restaurants: []
-=======
       restaurants: [],
       lat: '',
       lon: '',
       destination: '',
       testAddress: '483 Queen St West'
 
->>>>>>> 088057ac236ab133dd9a5ac22292f72d16374482
     }
   }
   componentDidMount() {
@@ -34,81 +26,6 @@ class App extends Component {
         startPos = position;
         const lat = document.getElementById('startLat').innerHTML = startPos.coords.latitude;
         const lon = document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-<<<<<<< HEAD
-        if (lat != null && lon != null) {
-         
-    axios({
-      method: 'GET',
-      url: 'https://proxy.hackeryou.com',
-      dataResponse: 'json',
-      paramsSerializer: function (params) {
-        return Qs.stringify(params, { arrayFormat: 'brackets' })
-      },
-      params: {
-        reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
-        params: {
-          key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
-          location: `${lat} ${lon}`,
-          radius: 1000,
-          keyword: 'restaurant',
-          opennow: true
-        },
-        xmlToJSON: false
-      }
-    }).then(res => {
-      console.log(res.data.results);
-    })
-          
-        }
-      };
-      navigator.geolocation.getCurrentPosition(geoSuccess);
-    };
-    
-  }
-
-  
-  // getResponse = () => {
-  //   if (document.getElementById('startLat').innerHTML) {
-  //     this.getPlaces(document.getElementById('startLat').innerHTML, document.getElementById('startLon').innerHTML);
-  //     console.log('allowed')
-  //   } else {
-  //     console.log('not allowed')
-  //   }
-  // }
-  // getPlaces = (lat, lon) => {
-  //   axios({
-  //     method: 'GET',
-  //     url: 'https://proxy.hackeryou.com',
-  //     dataResponse: 'json',
-  //     paramsSerializer: function (params) {
-  //       return Qs.stringify(params, { arrayFormat: 'brackets' })
-  //     },
-  //     params: {
-  //       reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
-  //       params: {
-  //         key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
-  //         location: `${lat} ${lon}`,
-  //         radius: 1000,
-  //         keyword: 'restaurants'
-  //       },
-  //       xmlToJSON: false
-  //     }
-  //   }).then(res => {
-  //     console.log(res.data.results);
-  //   })
-  // }
-  handleChange = (e) => {
-    console.log(e.target.value)
-    this.setState({
-      restaurants: e.target.value,
-    })
-    const userInput = this.state.restaurants;
-  }
-  handleSubmit = (e) => {
-    e.preventDefault();
-
-  }
-=======
         axios({
           method: 'GET',
           url: 'https://proxy.hackeryou.com',
@@ -175,26 +92,15 @@ class App extends Component {
     
     
   }
->>>>>>> 088057ac236ab133dd9a5ac22292f72d16374482
   render() {
     return (
       <Fragment>
         <h2>StumbleGrumble</h2>
         <main className="App">
-<<<<<<< HEAD
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" className="search" onChange={this.handleChange} value={this.state.restaurants}/>
-            <input type="submit"/>
-          </form>  
-          <div id="startLat"></div>   
-          <div id="startLon"></div>   
-          
-=======
           <Form />
           <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} destination={this.state.destination} />
           <div id="startLat"></div>   
           <div id="startLon"></div> 
->>>>>>> 088057ac236ab133dd9a5ac22292f72d16374482
         </main>
         <Footer/>
         
