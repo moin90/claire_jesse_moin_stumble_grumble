@@ -16,7 +16,7 @@ class App extends Component {
       lat: '',
       lon: '',
       destination: '',
-      testAddress: '483 Queen St West'
+      originAddress: '',
 
     }
   }
@@ -46,7 +46,6 @@ class App extends Component {
           }
 
         }).then(res => {
-          // console.log(res.data.results);
           this.setState ({
             restaurants: res.data.results,
             lat: lat,
@@ -88,16 +87,19 @@ class App extends Component {
           destination:this.state.destination,
         })
       })
+    })  
+  }
+  getUserInput = (restaurantsArray) => {
+    this.setState({
+      restaurants: restaurantsArray
     })
-    
-    
   }
   render() {
     return (
       <Fragment>
         <h2>StumbleGrumble</h2>
         <main className="App">
-          <Form />
+          <Form getUserInput={this.getUserInput}/>
           <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} destination={this.state.destination} />
           <div id="startLat"></div>   
           <div id="startLon"></div> 
