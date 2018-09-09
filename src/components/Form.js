@@ -41,7 +41,6 @@ class Form extends Component {
             console.log(res.data.results)
             this.props.getUserInput(res.data.results)
             })
-        
     }
     render() {
         return (
