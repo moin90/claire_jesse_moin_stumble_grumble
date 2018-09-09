@@ -46,6 +46,7 @@ class App extends Component {
           }
 
         }).then(res => {
+          console.log(lat, lon);
           this.setState ({
             restaurants: res.data.results,
             originAddress: `${lat} ${lon}`,
