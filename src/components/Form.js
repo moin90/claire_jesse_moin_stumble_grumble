@@ -12,8 +12,10 @@ class Form extends Component {
     handleChange = (e) => {
         this.setState({
            originAddress: e.target.value 
-        })
-        
+        }, () => {
+            this.props.getOriginAddress(this.state.originAddress)
+            console.log(this.state.originAddress)
+        }) 
     }
     handleSubmit = (e) => {
         e.preventDefault()
@@ -28,7 +30,7 @@ class Form extends Component {
                 reqUrl: 'https://maps.googleapis.com/maps/api/place/textsearch/json',
                 params: {
                     key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
-                    query: this.state.originAddress,
+                    query: `${this.state.originAddress}`,
                     radius: 1000,
                     type: 'restaurant',
                     open_now: true,
