@@ -1,0 +1,33 @@
+header {
+    height:100vh;
+    text-align: center;
+    font-size:2.5rem;
+}
+
+
+header .wrapper {
+    position:relative;
+    top:50%;
+    transform:translateY(-50%);
+    figure {
+        width:50%;
+        position: relative;
+        left:25%;
+        transform: translateX(-50%);
+        animation: pulsate 3s infinite;
+        z-index:-1;
+    }
+    a {
+        text-decoration: none;
+        font-weight:700;
+        color:$secondary;
+        padding:10px;
+        line-height:2;
+        border:2px solid $secondary;
+        border-radius: 10px;
+        background:rgba(255,255,255,0.7);
+        &:hover {
+            // color:$accent;
+        }
+    }
+}
