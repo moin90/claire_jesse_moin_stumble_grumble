@@ -52,11 +52,10 @@ class Results extends Component {
     }
     
     render() {
+        console.log(this.props.restaurantDetails)
         return (
             <div className="results">
                 {this.props.restaurantsArray.map((restaurant) => {
-
-                    // console.log(restaurant.name);
                     return (
                         <section className={restaurant.place_id} key={restaurant.place_id}>
                             <article>
@@ -71,7 +70,9 @@ class Results extends Component {
                                     <li>{this.priceInDollars(restaurant.price_level)}</li>
                                 </ul>
                                 <ul>
-                                    {/* {console.log(this.props.restaurantDetails)} */}
+                                    {this.props.restaurantDetails.map((restaurant2)=> {
+                                        <li className={restaurant.place_id}>{restaurant2.id}</li>
+                                    })}
                                 </ul>
                                 <button onClick={() => {restaurant.vicinity != undefined ? this.getDirections(restaurant.vicinity) : this.getDirections(restaurant.formatted_address)}}>Get Directions</button>
     
