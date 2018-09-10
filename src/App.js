@@ -13,11 +13,12 @@ class App extends Component {
     super();
     this.state = {
       restaurants: [],
-      lat: '',
-      lon: '',
+      // lat: '',
+      // lon: '',
       destination: '',
       originAddress: '',
       directions: '',
+      restaurantDetails: '',
 
     }
   }
@@ -52,7 +53,9 @@ class App extends Component {
             restaurants: res.data.results,
             originAddress: `${lat} ${lon}`,
           })
-          // console.log(res.data.results)
+          res.data.results.map((result)=> {
+            this.placeDetails(result.place_id)
+          })
         })
       } // end of geoSuccess
       var geoError = function (error) {
@@ -62,6 +65,29 @@ class App extends Component {
       navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
     };
   // }
+  placeDetails = (placeId) => {
+    axios({
+      method: 'GET',
+      url: 'https://proxy.hackeryou.com',
+      dataResponse: 'json',
+      paramsSerializer: function (params) {
+        return Qs.stringify(params, { arrayFormat: 'brackets' })
+      },
+      params: {
+        reqUrl: 'https://maps.googleapis.com/maps/api/place/details/json',
+        params: {
+          key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
+          placeid: placeId,
+        },
+        xmlToJSON: false
+      }
+    }).then(res => {
+      console.log(res.data.result)
+      this.setState({
+        restaurantDetails: res.data.result
+      })
+    })
+  }
   getDestination = (destination) => {
     this.setState({
       destination: destination
@@ -109,19 +135,21 @@ class App extends Component {
   }
   render() {
     return (
-      <Fragment>
-        <h2>StumbleGrumble</h2>
+      <React.Fragment>
         <main className="App">
-          <Form getUserInput={this.getUserInput} getOriginAddress={this.getOriginAddress}/>
-          <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} destination={this.state.destination} />
-          <div id="startLat"></div>   
-          <div id="startLon"></div>  
-          
+          <h2>StumbleGrumble</h2>
+          <div className="wrapper">
+              <Form getUserInput={this.getUserInput} getOriginAddress={this.getOriginAddress}/>
+              <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} destination={this.state.destination} restaurantDetails={this.state.restaurantDetails} />
+              <div id="startLat"></div>   
+              <div id="startLon"></div>  
+              
+          </div>
         </main>
         <Footer/>
-        
+      </React.Fragment>
+      
 
-      </Fragment>
     );
   }
 }

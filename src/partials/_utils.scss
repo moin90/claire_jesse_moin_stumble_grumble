@@ -1,0 +1,36 @@
+$bodyFont: 'Raleway', sans-serif;
+$primary: #002350;
+$secondary:#005CAD;
+$accent: #D2465B;
+$base:#565656;
+$light: #D6D6D6;
+
+@mixin breakPoint($point) {
+    @if $point == firstBreak {
+        @media (max-width:1150px) { @content;}
+    }
+    @if $point == secondBreak {
+        @media (max-width:780px) { @content;}
+    }
+    @if $point == thirdBreak {
+        @media (max-width:550px) { @content;}
+    }
+    @if $point == fourthBreak {
+        @media (max-width:450px) {@content;}
+    }
+  
+}
+
+
+@keyframes pulsate {
+    0% {
+        transform:scale(1);
+    }
+    50% {
+        transform:scale(1.5);
+
+    }
+    100% {
+        transform:scale(1);
+    }
+}

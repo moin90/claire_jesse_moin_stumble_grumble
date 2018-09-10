@@ -1,0 +1,28 @@
+#startLat, #startLon {
+    display:none;
+}
+
+main .wrapper {
+    border:5px solid purple;
+ 
+}
+
+.results {
+    padding:8rem 0;
+    article {
+        border:1px solid blue;
+        padding:2rem;
+        ul {
+            list-style:none;
+            padding:0;
+        }
+    }
+    img {
+        width:5%;
+        filter:grayscale(100%);
+        float: left;
+    }
+    img.colored {
+        filter:grayscale(0%);
+    }
+}
