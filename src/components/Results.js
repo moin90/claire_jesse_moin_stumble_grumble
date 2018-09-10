@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import fullBurger from '../assets/fullBurger.png';
-import halfBurger from '../assets/halfBurger.png';
 
 class Results extends Component {
     constructor(){
