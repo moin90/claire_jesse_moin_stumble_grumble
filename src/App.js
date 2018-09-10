@@ -23,7 +23,7 @@ class App extends Component {
   }
   componentDidMount() {
       var startPos;
-      var geoSuccess = function (position) {
+      var geoSuccess = (position) => {
         startPos = position;
         const lat = document.getElementById('startLat').innerHTML = startPos.coords.latitude;
         const lon = document.getElementById('startLon').innerHTML = startPos.coords.longitude;
