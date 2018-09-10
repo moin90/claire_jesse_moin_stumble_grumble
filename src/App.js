@@ -19,7 +19,7 @@ class App extends Component {
       destination: '',
       originAddress: '',
       directions: '',
-      restaurantDetails: '',
+      restaurantDetails: [],
 
     }
   }
@@ -49,13 +49,41 @@ class App extends Component {
           }
 
         }).then(res => {
-          console.log(res)
+          console.log(res.data.results)
           this.setState ({
             restaurants: res.data.results,
             originAddress: `${lat} ${lon}`,
-          })
-          res.data.results.map((result)=> {
-            this.placeDetails(result.place_id)
+          }, () => {
+            this.state.restaurants.map((restaurant) => {
+              // console.log(restaurant.place_id)
+              axios({
+                method: 'GET',
+                url: 'https://proxy.hackeryou.com',
+                dataResponse: 'json',
+                paramsSerializer: function (params) {
+                  return Qs.stringify(params, { arrayFormat: 'brackets' })
+                },
+                params: {
+                  reqUrl: 'https://maps.googleapis.com/maps/api/place/details/json',
+                  params: {
+                    key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
+                    placeid: restaurant.place_id,
+                  },
+                  xmlToJSON: false
+                }
+              }).then(res => {
+                const detailObject = {}
+                detailObject.id = restaurant.place_id
+                detailObject.phoneNum = res.data.result.formatted_phone_number
+                detailObject.menu = res.data.result.website
+                console.log(detailObject)
+                const newState = this.state.restaurantDetails
+                newState.push(detailObject);
+                this.setState({
+                  restaurantDetails: newState
+                })
+              })
+            })
           })
         })
       } // end of geoSuccess
@@ -66,29 +94,7 @@ class App extends Component {
       navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
     };
   // }
-  placeDetails = (placeId) => {
-    axios({
-      method: 'GET',
-      url: 'https://proxy.hackeryou.com',
-      dataResponse: 'json',
-      paramsSerializer: function (params) {
-        return Qs.stringify(params, { arrayFormat: 'brackets' })
-      },
-      params: {
-        reqUrl: 'https://maps.googleapis.com/maps/api/place/details/json',
-        params: {
-          key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
-          placeid: placeId,
-        },
-        xmlToJSON: false
-      }
-    }).then(res => {
-      console.log(res.data.result)
-      this.setState({
-        restaurantDetails: res.data.result
-      })
-    })
-  }
+  
   getDestination = (destination) => {
     this.setState({
       destination: destination
@@ -139,7 +145,7 @@ class App extends Component {
           <h2>StumbleGrumble</h2>
           <div className="wrapper">
               <Form getUserInput={this.getUserInput} getOriginAddress={this.getOriginAddress}/>
-              <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} destination={this.state.destination} restaurantDetails={this.state.restaurantDetails} />
+              <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} destination={this.state.destination} restaurantDetails={this.state.restaurantDetails}/>
               <div id="startLat"></div>   
               <div id="startLon"></div>  
               

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import fullBurger from '../assets/fullBurger.png';
-import halfBurger from '../assets/halfBurger.png';
+// import halfBurger from '../assets/halfBurger.png';
+import axios from 'axios';
+import Qs from 'qs';
 
 class Results extends Component {
     constructor(){
         super();
         this.state = {
-            destination:''
+            destination:'',
+            detailsObject: {}
         }
     }
     destination = (destination) => {
@@ -47,10 +50,12 @@ class Results extends Component {
     getDirections = (address) => {
         this.props.getDestination(address)
     }
+    
     render() {
         return (
             <div className="results">
                 {this.props.restaurantsArray.map((restaurant) => {
+
                     // console.log(restaurant.name);
                     return (
                         <section className={restaurant.place_id} key={restaurant.place_id}>
@@ -65,7 +70,9 @@ class Results extends Component {
                                     </li>
                                     <li>{this.priceInDollars(restaurant.price_level)}</li>
                                 </ul>
-    
+                                <ul>
+                                    {/* {console.log(this.props.restaurantDetails)} */}
+                                </ul>
                                 <button onClick={() => {restaurant.vicinity != undefined ? this.getDirections(restaurant.vicinity) : this.getDirections(restaurant.formatted_address)}}>Get Directions</button>
     
     
