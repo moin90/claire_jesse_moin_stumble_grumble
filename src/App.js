@@ -48,6 +48,7 @@ class App extends Component {
           }
 
         }).then(res => {
+          console.log(res)
           this.setState ({
             restaurants: res.data.results,
             originAddress: `${lat} ${lon}`,
@@ -84,7 +85,6 @@ class App extends Component {
           xmlToJSON: false
         }
       }).then(res => {
-        // console.log(res.data.routes[0].legs[0].steps)
         this.setState({
           directions: res.data.routes[0].legs[0].steps
         })

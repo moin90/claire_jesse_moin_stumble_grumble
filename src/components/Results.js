@@ -25,7 +25,6 @@ class Results extends Component {
         }
     }
     getDirections = (address) => {
-        // console.log(this.props);
         this.props.getDestination(address)
     }
     render() {
