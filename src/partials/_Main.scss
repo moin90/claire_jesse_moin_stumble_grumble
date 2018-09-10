@@ -13,12 +13,33 @@ main .wrapper {
         border:1px solid blue;
         padding:2rem;
         ul {
+            
             list-style:none;
             padding:0;
-        }
+            figure {
+               border: 1px solid blue;
+               width: 50%; 
+            }
+            // li:nth-child(1) {
+                //     border: 1px solid red;
+                // }
+            }
+        ul:nth-of-type(1) {
+            border: 1px solid red;
+            li:nth-of-type(1) {
+                text-align: center;
+            }
+            li:nth-of-type(2) {
+                float: left;
+            }
+            li:nth-of-type(3) {
+                text-align: right;
+            }
+        }   
+
     }
     img {
-        width:5%;
+        width:10%;
         filter:grayscale(100%);
         float: left;
     }
@@ -26,3 +47,9 @@ main .wrapper {
         filter:grayscale(0%);
     }
 }
+
+.price {
+    font-weight: 700;
+    color: $accent;
+}
+

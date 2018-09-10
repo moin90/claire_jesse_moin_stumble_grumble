@@ -180,12 +180,27 @@ main .wrapper {
     .results article ul {
       list-style: none;
       padding: 0; }
+      .results article ul figure {
+        border: 1px solid blue;
+        width: 50%; }
+    .results article ul:nth-of-type(1) {
+      border: 1px solid red; }
+      .results article ul:nth-of-type(1) li:nth-of-type(1) {
+        text-align: center; }
+      .results article ul:nth-of-type(1) li:nth-of-type(2) {
+        float: left; }
+      .results article ul:nth-of-type(1) li:nth-of-type(3) {
+        text-align: right; }
   .results img {
-    width: 5%;
+    width: 10%;
     filter: grayscale(100%);
     float: left; }
   .results img.colored {
     filter: grayscale(0%); }
+
+.price {
+  font-weight: 700;
+  color: #D2465B; }
 
 .hide {
   display: none; }
