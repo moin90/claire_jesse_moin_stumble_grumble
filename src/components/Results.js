@@ -54,8 +54,8 @@ class Results extends Component {
                 menu = this.props.restaurantDetails[i].menu;
             }
             if (this.props.restaurantDetails[i].id === placeId) {
-                detailsArray.push(<li>{this.props.restaurantDetails[i].phoneNum}</li>)
-                detailsArray.push(<li><a href={this.props.restaurantDetails[i].menu}>Browse the website</a></li>)
+                detailsArray.push(<li className="phone">{this.props.restaurantDetails[i].phoneNum}</li>)
+                detailsArray.push(<li className="website"><a href={this.props.restaurantDetails[i].menu}>Website</a></li>)
             }
         }
         return detailsArray
@@ -67,7 +67,7 @@ class Results extends Component {
                 {this.props.restaurantsArray.map((restaurant) => {
                     return (
                         <section className={restaurant.place_id} key={restaurant.place_id}>
-                            <article>
+                            <article className="clearfix">
                                 <h3>{restaurant.name}</h3>
                                 <ul className="clearfix rating">
                                     <li>
@@ -81,8 +81,9 @@ class Results extends Component {
                                 <ul>
                                     <li>{restaurant.vicinity != undefined ? restaurant.vicinity : restaurant.formatted_address}</li>
                                     {this.getDetails(restaurant.place_id)}
+                                
                                 </ul>
-                                <button onClick={() => {restaurant.vicinity != undefined ? this.getDirections(restaurant.vicinity) : this.getDirections(restaurant.formatted_address)}}>Get Directions</button>
+                                <button onClick={() => { restaurant.vicinity != undefined ? this.getDirections(restaurant.vicinity) : this.getDirections(restaurant.formatted_address) }}>Get Directions</button>
                             </article>
                 
 
