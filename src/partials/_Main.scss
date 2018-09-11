@@ -106,6 +106,7 @@ a, button, input[type="submit"] {
     &:hover, &:active{
         color:white;
         background:rgba(0,92,173,0.7);
+        transition: 0.2s all ease;
     }
 }
 
@@ -145,8 +146,10 @@ a, button, input[type="submit"] {
         z-index:20;
         position: absolute;
         top:0;
+        cursor: pointer;
         &:hover, &:active {
             color:lighten($accent, 10%);
+            transition: 0.2s all ease;
         }
     }
     .fa-utensils:before {
