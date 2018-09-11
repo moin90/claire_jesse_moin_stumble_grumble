@@ -79,6 +79,18 @@ class Form extends Component {
                     })// this.state.restaurant 
                 }) 
             })
+
+    }
+    render() {
+        return (
+            <section className="form">
+                <form className="input hide" onSubmit={this.handleSubmit}>
+                    <label htmlFor="search"></label>
+                    <input type="search" id="search" placeholder="Enter your location" onChange={this.handleChange}/>
+                    <input type="submit" value="I'M STARVING!"/>
+                </form>
+            </section>
+=======
             // console.log(this.state.restaurants)
             }
     render() {
