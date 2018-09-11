@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Qs from 'qs';
+import { Pulse } from 'react-preloading-component';
 
 class Form extends Component {
     constructor() {
@@ -87,10 +88,10 @@ class Form extends Component {
                 <form className="input hide" onSubmit={this.handleSubmit}>
                     <label htmlFor="search"></label>
                     <input type="search" id="search" placeholder="Enter your location" onChange={this.handleChange} />
-                    <input type="submit" value="I'M STARVING!" />
+                    <input type="submit" value="I'M STARVING!"/>
                 </form>
             </section>
-        );
+        ); 
     }
 };
 
