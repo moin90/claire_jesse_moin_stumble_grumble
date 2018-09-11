@@ -171,6 +171,17 @@ header .wrapper {
       header .wrapper figure {
         width: 20%;
         left: 40%; } }
+  header .wrapper a {
+    font-weight: 700;
+    color: #005CAD;
+    padding: 10px;
+    line-height: 2;
+    border: 2px solid #005CAD;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.7); }
+
+body {
+  font-family: 'Raleway', sans-serif; }
 
 #startLat, #startLon {
   display: none; }

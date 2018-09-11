@@ -8,7 +8,6 @@ header {
     }
 }
 
-
 header .wrapper {
     position:relative;
     top:50%;
@@ -32,5 +31,14 @@ header .wrapper {
             width:20%;
             left:40%;
         }
+    }
+    a {
+        font-weight:700;
+        color:$secondary;
+        padding:10px;
+        line-height:2;
+        border:2px solid $secondary;
+        border-radius: 10px;
+        background:rgba(255,255,255,0.7);
     }
 }

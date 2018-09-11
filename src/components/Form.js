@@ -79,8 +79,8 @@ class Form extends Component {
                     })// this.state.restaurant 
                 }) 
             })
-            // console.log(this.state.restaurants)
-            }
+
+    }
     render() {
         return (
             <section className="form">
