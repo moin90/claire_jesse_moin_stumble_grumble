@@ -169,6 +169,9 @@ header .wrapper {
 #startLat, #startLon {
   display: none; }
 
+main .wrapper {
+  padding-top: 3rem; }
+
 .results {
   padding: 8rem 0; }
   .results article {
@@ -194,12 +197,12 @@ header .wrapper {
   font-weight: 700;
   color: #D2465B; }
 
-figure .rating img {
+figure.rating img {
   width: 10%;
   filter: grayscale(100%);
   float: left; }
 
-figure .rating img.colored {
+figure.rating img.colored {
   filter: grayscale(0%); }
 
 .hide {
@@ -207,6 +210,9 @@ figure .rating img.colored {
 
 .startLat, .startLon {
   display: none; }
+
+.input {
+  margin: 6rem; }
 
 html {
   font-size: 62.5%; }
