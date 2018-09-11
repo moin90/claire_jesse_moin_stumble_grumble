@@ -302,6 +302,15 @@ a, button, input[type="submit"] {
   position: relative;
   left: -3rem; }
 
+.hide {
+  display: none; }
+
+.startLat, .startLon {
+  display: none; }
+
+.input {
+  margin: 6rem; }
+
 .form {
   text-align: center;
   margin: 0 auto; }
@@ -323,15 +332,6 @@ form.input input[type=submit] {
   color: white;
   font-weight: 700;
   padding: 10px; }
-
-.hide {
-  display: none; }
-
-.startLat, .startLon {
-  display: none; }
-
-.input {
-  margin: 6rem; }
 
 html {
   font-size: 62.5%; }

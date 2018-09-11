@@ -19,12 +19,15 @@ class App extends Component {
       originAddress: '',
       directions: '',
       restaurantDetails: [],
-
+      userInput: true
     }
   }
   componentDidMount() {
       var startPos;
       var geoSuccess = (position) => {
+        this.setState({
+          userInput: false
+        })
         startPos = position;
         const lat = document.getElementById('startLat').innerHTML = startPos.coords.latitude;
         const lon = document.getElementById('startLon').innerHTML = startPos.coords.longitude;
@@ -51,7 +54,7 @@ class App extends Component {
           console.log(res.data.results)
           this.setState ({
             restaurants: res.data.results,
-            originAddress: `${lat} ${lon}`,
+            originAddress: `${lat} ${lon}`
           }, () => {
             this.state.restaurants.map((restaurant) => {
               axios({
@@ -149,7 +152,7 @@ class App extends Component {
           <h2>StumbleGrumble</h2>
           <div className="wrapper">
               <Form getUserInput={this.getUserInput} getOriginAddress={this.getOriginAddress} setPlaceDetails={this.setPlaceDetails}/>
-              <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} destination={this.state.destination} restaurantDetails={this.state.restaurantDetails}/>
+              <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} destination={this.state.destination} restaurantDetails={this.state.restaurantDetails} userInput={this.state.userInput}/>
               <div id="startLat"></div>   
               <div id="startLon"></div>  
               

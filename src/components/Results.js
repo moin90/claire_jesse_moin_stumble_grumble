@@ -76,7 +76,7 @@ class Results extends Component {
     //     if (this.props.length)
     // }
     render() {
-        {if (this.props.restaurantsArray.length === 0) {
+        {if (this.props.restaurantsArray.length === 0 && this.props.userInput === false) {
             return (
                 <div className="preloader">
                     <Pulse
