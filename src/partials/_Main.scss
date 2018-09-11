@@ -94,10 +94,9 @@ a, button, input[type="submit"] {
     padding:5px 15px;
     background:none;
     border-radius: 5px;
-    &:hover{
+    &:hover, &:active{
         color:white;
         background:rgba(0,92,173,0.7);
-        // border:1px solid rgba(0,92,173,0.7);
     }
 }
 
@@ -135,9 +134,8 @@ a, button, input[type="submit"] {
         z-index:20;
         position: absolute;
         top:0;
-        &:hover {
+        &:hover, &:active {
             color:lighten($accent, 10%);
-            // border:2px solid lighten($accent, 10%);
         }
     }
     .fa-utensils:before {

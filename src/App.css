@@ -245,7 +245,7 @@ a, button, input[type="submit"] {
   padding: 5px 15px;
   background: none;
   border-radius: 5px; }
-  a:hover, button:hover, input[type="submit"]:hover {
+  a:hover, a:active, button:hover, button:active, input[type="submit"]:hover, input[type="submit"]:active {
     color: white;
     background: rgba(0, 92, 173, 0.7); }
 
@@ -279,7 +279,7 @@ a, button, input[type="submit"] {
   z-index: 20;
   position: absolute;
   top: 0; }
-  .directions .fa-caret-left:hover {
+  .directions .fa-caret-left:hover, .directions .fa-caret-left:active {
     color: #dc6f7f; }
 
 .directions .fa-utensils:before {
