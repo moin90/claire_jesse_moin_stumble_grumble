@@ -18,6 +18,11 @@ main .wrapper {
     }
  
 }
+
+.preloader {
+    height: 100vh;
+}
+
 .results {
     padding:8rem 0;
     article {
@@ -118,6 +123,9 @@ a, button, input[type="submit"] {
             padding: 10px 0;
             border-bottom: 2px dotted $secondary;
         }
+        li:last-child {
+           border-bottom:none;
+       }
     }
     h3 {
         padding:5px 0;

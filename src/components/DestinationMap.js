@@ -7,7 +7,6 @@ class DestinationMap extends Component {
         return destination.replace(' ', '%20')
     }
     render() {
-        console.log(this.props.location.destination)
         return (
             <div className="wrapper directions clearfix">
                 <h3>Stumbling Directions</h3>
@@ -24,8 +23,6 @@ class DestinationMap extends Component {
                             )  
                         })}
                     </ul>
-
-
                 </section>
             </div>
         );
