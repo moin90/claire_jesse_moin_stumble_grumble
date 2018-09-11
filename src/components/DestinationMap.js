@@ -19,7 +19,7 @@ class DestinationMap extends Component {
                     <ul>
                         {this.props.location.directions.map((route) => {
                             return (
-                                <li key={route.end_location.lat}>{route.html_instructions.replace(/<[^<div>]+>/g, '').replace(/<[^<>]+>/g, '.\n')}</li>
+                                <li key={route.end_location.lat}>{route.html_instructions.replace(/<[^<div>]+>/g, '').replace(/<[^<>]+>/g, '.\n').replace('Turn', 'Stumble')}</li>
 
                             )
                         })}
