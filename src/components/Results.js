@@ -75,7 +75,7 @@ class Results extends Component {
                                 <h3>{restaurant.name}</h3>
                                 <ul className="clearfix rating">
                                     <li>
-                                        <figure className="clearfix">
+                                        <figure className="clearfix rating">
                                             {this.makeBurgers(restaurant.rating, restaurant.place_id)}
                                         </figure>
                                     </li>
