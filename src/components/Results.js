@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import fullBurger from '../assets/fullBurger.png';
-import axios from 'axios';
-import Qs from 'qs';
 
 class Results extends Component {
     constructor(){
@@ -29,11 +27,8 @@ class Results extends Component {
         }
     }
     makeBurgers = (burgerRating) => {
-        // console.log(burgerRating)
         const roundedNumber = Math.round(burgerRating)
         let burgerArray = []
-        // empty array make
-        // for loop that creates 5 image elements with burgers to push to array
         for(let i = 1; i <= 5; i++) {
             let burger;
             if( i <= roundedNumber ){
@@ -52,19 +47,22 @@ class Results extends Component {
     getDetails = (placeId) => {
         const detailsArray = []
         for (let i = 0; i < this.props.restaurantDetails.length; i++) {
-            let menu = this.props.restaurantDetails[i].menu;
-            menu = menu.replace(/^.*:\/\//i, '').replace('www.', '');
+            let menu = ''
+            if (this.props.restaurantDetails[i].menu === undefined) {
+                menu = ''
+            } else {
+                menu = this.props.restaurantDetails[i].menu;
+                // menu = menu.replace(/^.*:\/\//i, '').replace('www.', '')
+            }
             if (this.props.restaurantDetails[i].id === placeId) {
                 detailsArray.push(<li>{this.props.restaurantDetails[i].phoneNum}</li>)
-                detailsArray.push(<li><a href={this.props.restaurantDetails[i].menu}>{menu}</a></li>)
-                    
+                detailsArray.push(<li><a href={this.props.restaurantDetails[i].menu}>Browse the website</a></li>)
             }
         }
         return detailsArray
     }
     
     render() {
-        // console.log(this.props.restaurantsArray)
         return (
             <div className="results">
                 {this.props.restaurantsArray.map((restaurant) => {
@@ -86,8 +84,6 @@ class Results extends Component {
                                     {this.getDetails(restaurant.place_id)}
                                 </ul>
                                 <button onClick={() => {restaurant.vicinity != undefined ? this.getDirections(restaurant.vicinity) : this.getDirections(restaurant.formatted_address)}}>Get Directions</button>
-    
-    
                             </article>
                 
 
