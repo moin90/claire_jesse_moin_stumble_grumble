@@ -176,10 +176,14 @@ main .wrapper {
   padding: 8rem 0; }
   .results article {
     border: 1px solid blue;
-    padding: 2rem; }
+    padding: 2rem;
+    list-style: none; }
     .results article ul {
       list-style: none;
       padding: 0; }
+      .results article ul a {
+        text-decoration: none;
+        color: black; }
       .results article ul figure {
         border: 1px solid blue;
         width: 50%; }
@@ -199,8 +203,10 @@ main .wrapper {
     filter: grayscale(0%); }
 
 .price {
+  font-size: 3rem;
   font-weight: 700;
-  color: #D2465B; }
+  color: #D2465B;
+  float: right; }
 
 .hide {
   display: none; }

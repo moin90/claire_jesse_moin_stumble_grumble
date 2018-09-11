@@ -73,6 +73,7 @@ class Results extends Component {
                         <section className={restaurant.place_id} key={restaurant.place_id}>
                             <article>
                                 <h3>{restaurant.name}</h3>
+                                    <li className="price">{this.priceInDollars(restaurant.price_level)}</li>
                                 <ul className="clearfix">
                                     <li>{restaurant.vicinity != undefined ? restaurant.vicinity : restaurant.formatted_address}</li>
                                     <li>
@@ -80,7 +81,6 @@ class Results extends Component {
                                             {this.makeBurgers(restaurant.rating, restaurant.place_id)}
                                         </figure>
                                     </li>
-                                    <li className="price">{this.priceInDollars(restaurant.price_level)}</li>
                                 </ul>
                                 <ul>
                                     {this.getDetails(restaurant.place_id)}

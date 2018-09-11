@@ -12,10 +12,14 @@ main .wrapper {
     article {
         border:1px solid blue;
         padding:2rem;
+        list-style: none;
         ul {
-            
             list-style:none;
             padding:0;
+            a {
+                text-decoration: none;
+                color: black;
+            }
             figure {
                border: 1px solid blue;
                width: 50%; 
@@ -49,7 +53,9 @@ main .wrapper {
 }
 
 .price {
+    font-size: 3rem;
     font-weight: 700;
     color: $accent;
+    float: right;
 }
 
