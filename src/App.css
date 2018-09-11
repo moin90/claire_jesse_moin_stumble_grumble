@@ -280,13 +280,12 @@ form.input input[type=submit] {
   font-weight: 700;
   padding: 10px; }
 
-a, button, input[type="submit"] {
+a, button, input[type=submit] {
   color: #005CAD;
   border: 1px solid #005CAD;
   padding: 5px 15px;
   background: none;
   border-radius: 5px; }
-
 
 .hide {
   display: none; }
