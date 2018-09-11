@@ -169,9 +169,6 @@ header .wrapper {
 #startLat, #startLon {
   display: none; }
 
-main .wrapper {
-  border: 5px solid purple; }
-
 .results {
   padding: 8rem 0; }
   .results article {
@@ -181,6 +178,7 @@ main .wrapper {
     .results article ul {
       list-style: none;
       padding: 0; }
+<<<<<<< HEAD
       .results article ul a {
         text-decoration: none;
         color: black; }
@@ -201,12 +199,34 @@ main .wrapper {
     float: left; }
   .results img.colored {
     filter: grayscale(0%); }
+=======
+    .results article .rating {
+      border: 1px solid pink; }
+    .results article ul:nth-of-type(1) li:nth-of-type(1) {
+      float: left;
+      width: 85%; }
+    .results article ul:nth-of-type(1) .price {
+      float: right;
+      border: 1px solid purple;
+      text-align: right;
+      padding: 0;
+      font-size: 1.5rem;
+      position: relative; }
+>>>>>>> 4dd3733a321108db58cfd5afc25a3791878b8d3b
 
 .price {
   font-size: 3rem;
   font-weight: 700;
   color: #D2465B;
   float: right; }
+
+figure img {
+  width: 10%;
+  filter: grayscale(100%);
+  float: left; }
+
+figure img.colored {
+  filter: grayscale(0%); }
 
 .hide {
   display: none; }
