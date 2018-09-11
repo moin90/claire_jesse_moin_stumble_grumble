@@ -14,6 +14,8 @@ class DestinationMap extends Component {
                 <i onClick={() => this.props.history.goBack()}className="fas fa-caret-left"></i>
 
                 <div className="mapouter"><div className="gmap_canvas"><iframe width="100%" height="400px" id="gmap_canvas" src={`https://maps.google.com/maps?q=${this.formattedAddress(this.props.location.destination)}&t=&z=13&ie=UTF8&iwloc=&output=embed`} frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe></div></div>
+                <button onClick={() => this.props.history.goBack()}>{<i className="fas fa-caret-left"></i>}</button>
+                <div className="mapouter"><div className="gmap_canvas"><iframe width="100%" height="250px " id="gmap_canvas" src={`https://maps.google.com/maps?q=${this.formattedAddress(this.props.location.destination)}&t=&z=13&ie=UTF8&iwloc=&output=embed`} frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe></div></div>
 
                 <section>
                     <ul>
@@ -23,16 +25,14 @@ class DestinationMap extends Component {
 
                             )
                         })}
+        
+                                )  
+                            })}
                     </ul>
 
 
                 </section>
             </div>
-
-
-
-
-
         );
     }
 };

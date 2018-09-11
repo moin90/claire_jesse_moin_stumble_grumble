@@ -1,3 +1,7 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
 #startLat, #startLon {
     display:none;
 }
@@ -101,7 +105,6 @@ a, button, input[type="submit"] {
     }
 }
 
-
 .directions {
     .mapouter {
         text-align: center;
@@ -147,15 +150,41 @@ a, button, input[type="submit"] {
     //     top: 0;
         
     // }
+    }
+    .fa-caret-left {
+        font-size: 5rem;
+        border: 2px solid $primary;
+        border-radius: 5px;
+        background-color: $primary;
+        padding-right: 5px;
+        color: $accent;
+        width: 100%;
+        text-align: center;
+    }
+    button {
+        width: 7rem;
+        height: 6rem;
+        float: left;
+        border: none;
+        background-color: transparent;
+        border-radius: 5px;
+        position: fixed;
+        top: 0;
+        
+    }
     .fa-utensils:before {
         position: relative;
         left: -3rem;
     }
 }
+
+}
+
     .form {
         text-align: center;
         margin: 0 auto;
     }
+
     form.input input[type=search] {
         float: left;
         width: 80%;
@@ -173,4 +202,10 @@ a, button, input[type="submit"] {
         color: white;
         font-weight: 700;
         padding: 10px;
-    }
+        a, button, input[type="submit"] {
+            color:$secondary;
+            border:1px solid $secondary;
+            padding:5px 15px;
+            background:none;
+            border-radius: 5px;
+        }
