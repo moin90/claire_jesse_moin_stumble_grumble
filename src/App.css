@@ -166,8 +166,14 @@ header .wrapper {
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.7); }
 
+body {
+  font-family: 'Raleway', sans-serif; }
+
 #startLat, #startLon {
   display: none; }
+
+main .wrapper {
+  padding-top: 3rem; }
 
 .results {
   padding: 8rem 0; }
@@ -194,33 +200,85 @@ header .wrapper {
   font-weight: 700;
   color: #D2465B; }
 
-figure img {
+figure.rating img {
   width: 10%;
   filter: grayscale(100%);
   float: left; }
 
-figure img.colored {
+figure.rating img.colored {
   filter: grayscale(0%); }
 
-.mapouter {
-  text-align: center; }
+.directions .mapouter {
+  text-align: center;
+  margin: 50px 10px 10px 10px;
+  text-align: center;
+  border-top: 1.5px dotted #005CAD; }
+
+.directions ul {
+  list-style: none;
+  padding: 0 10px; }
+  .directions ul li {
+    padding: 10px 0;
+    border-bottom: 2px dotted #005CAD; }
 
 .directions h3 {
+  margin-top: 10px;
   text-align: center; }
 
-.directions .fa-caret-square-left {
-  font-size: 5rem; }
+.directions .fa-caret-left {
+  font-size: 5rem;
+  border: 2px solid #002350;
+  border-radius: 5px;
+  background-color: #002350;
+  padding-right: 5px;
+  color: #D2465B;
+  width: 100%;
+  text-align: center; }
 
 .directions button {
   width: 7rem;
   height: 6rem;
-  float: left; }
+  float: left;
+  border: none;
+  background-color: transparent;
+  border-radius: 5px;
+  position: fixed;
+  top: 0; }
+
+.directions .fa-utensils:before {
+  position: relative;
+  left: -3rem; }
+
+.form {
+  text-align: center;
+  margin: 0 auto; }
+
+form.input input[type=search] {
+  float: left;
+  width: 80%;
+  border: 2px solid #005CAD;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  margin-right: 30px; }
+
+form.input input[type=submit] {
+  width: 80%;
+  border: 3px solid #002350;
+  border-radius: 5px;
+  background-color: #005CAD;
+  color: white;
+  font-weight: 700;
+  padding: 10px; }
 
 .hide {
   display: none; }
 
 .startLat, .startLon {
   display: none; }
+
+.input {
+  margin: 6rem; }
 
 html {
   font-size: 62.5%; }
