@@ -194,12 +194,12 @@ header .wrapper {
   font-weight: 700;
   color: #D2465B; }
 
-figure img {
+figure .rating img {
   width: 10%;
   filter: grayscale(100%);
   float: left; }
 
-figure img.colored {
+figure .rating img.colored {
   filter: grayscale(0%); }
 
 .hide {
