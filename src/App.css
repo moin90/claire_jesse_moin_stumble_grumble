@@ -197,6 +197,9 @@ main .wrapper {
     main .wrapper {
       width: 90%; } }
 
+.preloader {
+  height: 100vh; }
+
 .results {
   padding: 8rem 0; }
   .results article {
