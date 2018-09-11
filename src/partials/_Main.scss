@@ -1,12 +1,10 @@
 #startLat, #startLon {
     display:none;
 }
-
 main .wrapper {
     padding-top: 3rem;
  
 }
-
 .results {
     padding:8rem 0;
     article {
@@ -36,10 +34,8 @@ main .wrapper {
                 position: relative;
             }
         }   
-
     }
 }
-
 .price {
     font-weight: 700;
     color: $accent;

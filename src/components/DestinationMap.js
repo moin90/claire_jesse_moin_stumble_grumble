@@ -7,7 +7,7 @@ class DestinationMap extends Component {
         return destination.replace(' ', '%20')
     }
     render() {
-        console.log(this.props.location.destination)
+        // console.log(this.props.location.destination)
         return (
             <div className="wrapper">
                 <button onClick={() => this.props.history.goBack()}>Back</button>

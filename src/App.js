@@ -92,7 +92,11 @@ class App extends Component {
       navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
     };
   // }
-  
+  setPlaceDetails = (details) => {
+    this.setState({
+      restaurantDetails: details,
+    })
+  }
   getDestination = (destination) => {
     this.setState({
       destination: destination
@@ -137,12 +141,13 @@ class App extends Component {
     })
   }
   render() {
+    // console.log(this.state.restaurantDetails)
     return (
       <React.Fragment>
         <main className="App">
           <h2>StumbleGrumble</h2>
           <div className="wrapper">
-              <Form getUserInput={this.getUserInput} getOriginAddress={this.getOriginAddress}/>
+              <Form getUserInput={this.getUserInput} getOriginAddress={this.getOriginAddress} setPlaceDetails={this.setPlaceDetails}/>
               <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} destination={this.state.destination} restaurantDetails={this.state.restaurantDetails}/>
               <div id="startLat"></div>   
               <div id="startLon"></div>  

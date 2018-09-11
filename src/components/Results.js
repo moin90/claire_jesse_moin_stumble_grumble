@@ -32,10 +32,10 @@ class Results extends Component {
         for(let i = 1; i <= 5; i++) {
             let burger;
             if( i <= roundedNumber ){
-               burger = <img src={fullBurger} className="colored"/>
+               burger = <img src={fullBurger} className="colored burgerStar"/>
 
             } else {
-                burger = <img src={fullBurger}/>
+                burger = <img className="burgerStar" src={fullBurger}/>
             }
             burgerArray.push(burger)
         }
