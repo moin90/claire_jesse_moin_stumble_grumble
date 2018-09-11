@@ -14,6 +14,12 @@ body {
   color:$primary;
   font-size:1.8rem;
   font-family:$bodyFont;
+  @include breakPoint(secondBreak) {
+    font-size:1.6rem;
+  }
+  @include breakPoint(thirdBreak) {
+    font-size:1.8rem;
+  }
 }
 
 img {
@@ -40,6 +46,9 @@ h2 {
 h3 {
   padding:0 4rem;
   text-align: center;
+  @include breakPoint(secondBreak) {
+    height:5rem;
+  }
 }
 
 a {

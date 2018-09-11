@@ -3,6 +3,15 @@
 }
 main .wrapper {
     padding-top: 1px;
+    width:98%;
+    margin:0 auto;
+    @include breakPoint(firstBreak) {
+        // border:1px solid red;
+        width:80%;
+    }
+    @include breakPoint(thirdBreak) {
+        width:90%;
+    }
  
 }
 .results {
@@ -13,6 +22,13 @@ main .wrapper {
         margin:1rem;
         border-radius: 10px;
         background:rgba(255,255,255,0.3);
+        @include breakPoint(secondBreak) {
+            width:calc(50% - 2rem);
+            float: left;
+        }
+        @include breakPoint(thirdBreak) {
+            width:calc(33.3% - 2rem)
+        }
         .website {
             float: left;
         }
@@ -39,6 +55,9 @@ main .wrapper {
                 float: left;
                 // border:1px solid black;
                 width:85%;
+                @include breakPoint(secondBreak) {
+                    width:80%;
+                }
             }
             .price {
                 float:right;
@@ -69,10 +88,15 @@ figure.rating{
     }
 }
 
-        a, button, input[type="submit"] {
-            color:$secondary;
-            border:1px solid $secondary;
-            padding:5px 15px;
-            background:none;
-            border-radius: 5px;
-        }
+a, button, input[type="submit"] {
+    color:$secondary;
+    border:1px solid $secondary;
+    padding:5px 15px;
+    background:none;
+    border-radius: 5px;
+    &:hover{
+        color:white;
+        background:rgba(0,92,173,0.7);
+        // border:1px solid rgba(0,92,173,0.7);
+    }
+}
