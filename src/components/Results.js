@@ -23,7 +23,7 @@ class Results extends Component {
         if (price > 0) {
             return dollarString.repeat(price);
         } else {
-            return 'Price: N/A'
+            return '-'
         }
     }
     makeBurgers = (burgerRating) => {
@@ -59,8 +59,7 @@ class Results extends Component {
             }
         }
         return detailsArray
-    }
-    
+    }    
     render() {
         return (
             <div className="results">
@@ -79,7 +78,7 @@ class Results extends Component {
                                     <li className="price">{this.priceInDollars(restaurant.price_level)}</li>
                                 </ul>
                                 <ul>
-                                    <li>{restaurant.vicinity != undefined ? restaurant.vicinity : restaurant.formatted_address}</li>
+                                    <li className="address">{restaurant.vicinity != undefined ? restaurant.vicinity : restaurant.formatted_address}</li>
                                     {this.getDetails(restaurant.place_id)}
                                 
                                 </ul>

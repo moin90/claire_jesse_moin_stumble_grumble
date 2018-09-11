@@ -143,7 +143,10 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 header {
   height: 100vh;
   text-align: center;
-  font-size: 2.5rem; }
+  font-size: 2.5rem;
+  font-weight: 700; }
+  header a {
+    border: 2px solid #005CAD; }
 
 header .wrapper {
   position: relative;
@@ -156,6 +159,18 @@ header .wrapper {
     transform: translateX(-50%);
     animation: pulsate 3s infinite;
     z-index: -1; }
+    @media (min-width: 600px) {
+      header .wrapper figure {
+        width: 30%;
+        left: 35%; } }
+    @media (min-width: 900px) {
+      header .wrapper figure {
+        width: 25%;
+        left: 38%; } }
+    @media (min-width: 1200px) {
+      header .wrapper figure {
+        width: 20%;
+        left: 40%; } }
   header .wrapper a {
     font-weight: 700;
     color: #005CAD;
@@ -172,7 +187,15 @@ body {
   display: none; }
 
 main .wrapper {
-  padding-top: 1px; }
+  padding-top: 1px;
+  width: 98%;
+  margin: 0 auto; }
+  @media (min-width: 600px) {
+    main .wrapper {
+      width: 80%; } }
+  @media (min-width: 1200px) {
+    main .wrapper {
+      width: 90%; } }
 
 .results {
   padding: 8rem 0; }
@@ -182,6 +205,13 @@ main .wrapper {
     margin: 1rem;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.3); }
+    @media (min-width: 900px) {
+      .results article {
+        width: calc(50% - 2rem);
+        float: left; } }
+    @media (min-width: 1200px) {
+      .results article {
+        width: calc(33.3% - 2rem); } }
     .results article .website {
       float: left; }
     .results article .phone {
@@ -198,6 +228,9 @@ main .wrapper {
     .results article ul:nth-of-type(1) li:nth-of-type(1) {
       float: left;
       width: 85%; }
+      @media (min-width: 900px) {
+        .results article ul:nth-of-type(1) li:nth-of-type(1) {
+          width: 80%; } }
     .results article ul:nth-of-type(1) .price {
       float: right;
       text-align: right;
@@ -217,6 +250,16 @@ figure.rating img {
 figure.rating img.colored {
   filter: grayscale(0%); }
 
+a, button, input[type="submit"] {
+  color: #005CAD;
+  border: 1px solid #005CAD;
+  padding: 5px 15px;
+  background: none;
+  border-radius: 5px; }
+  a:hover, button:hover, input[type="submit"]:hover {
+    color: white;
+    background: rgba(0, 92, 173, 0.7); }
+
 .directions .mapouter {
   text-align: center;
   margin: 50px 10px 10px 10px;
@@ -232,27 +275,21 @@ figure.rating img.colored {
 
 .directions h3 {
   margin-top: 10px;
-  text-align: center; }
+  text-align: center;
+  font-size: 3rem; }
 
 .directions .fa-caret-left {
   font-size: 5rem;
-  border: 2px solid #002350;
+  border: 2px solid #D2465B;
   border-radius: 5px;
-  background-color: #002350;
-  padding-right: 5px;
+  padding: 2px 5px 0 0;
   color: #D2465B;
-  width: 100%;
+  width: 60px;
+  height: 60px;
   text-align: center; }
-
-.directions button {
-  width: 7rem;
-  height: 6rem;
-  float: left;
-  border: none;
-  background-color: transparent;
-  border-radius: 5px;
-  position: fixed;
-  top: 0; }
+  .directions .fa-caret-left:hover {
+    color: #dc6f7f;
+    border: 2px solid #dc6f7f; }
 
 .directions .fa-utensils:before {
   position: relative;
@@ -304,6 +341,12 @@ body {
   color: #002350;
   font-size: 1.8rem;
   font-family: "Raleway", sans-serif; }
+  @media (min-width: 900px) {
+    body {
+      font-size: 1.6rem; } }
+  @media (min-width: 1200px) {
+    body {
+      font-size: 1.8rem; } }
 
 img {
   width: 100%;
@@ -324,6 +367,9 @@ h2 {
 h3 {
   padding: 0 4rem;
   text-align: center; }
+  @media (min-width: 900px) {
+    h3 {
+      height: 5rem; } }
 
 a {
   text-decoration: none; }
