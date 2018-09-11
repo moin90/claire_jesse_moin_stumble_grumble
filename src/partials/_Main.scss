@@ -3,7 +3,7 @@
 }
 
 main .wrapper {
-    // border:5px solid purple;
+    padding-top: 3rem;
  
 }
 
@@ -45,7 +45,7 @@ main .wrapper {
     color: $accent;
 }
 
-figure .rating{
+figure.rating{
     img {
         width:10%;
         filter:grayscale(100%);
