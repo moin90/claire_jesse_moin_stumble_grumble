@@ -54,7 +54,6 @@ class App extends Component {
             originAddress: `${lat} ${lon}`,
           }, () => {
             this.state.restaurants.map((restaurant) => {
-              // console.log(restaurant.place_id)
               axios({
                 method: 'GET',
                 url: 'https://proxy.hackeryou.com',
