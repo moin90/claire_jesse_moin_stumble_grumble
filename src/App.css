@@ -272,6 +272,8 @@ a, button, input[type="submit"] {
   .directions ul li {
     padding: 10px 0;
     border-bottom: 2px dotted #005CAD; }
+  .directions ul li:last-child {
+    border-bottom: none; }
 
 .directions h3 {
   padding: 5px 0;
