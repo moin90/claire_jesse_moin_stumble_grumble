@@ -1,8 +1,21 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
 #startLat, #startLon {
     display:none;
 }
 main .wrapper {
     padding-top: 1px;
+    width:98%;
+    margin:0 auto;
+    @include breakPoint(firstBreak) {
+        // border:1px solid red;
+        width:80%;
+    }
+    @include breakPoint(thirdBreak) {
+        width:90%;
+    }
  
 }
 .results {
@@ -13,6 +26,13 @@ main .wrapper {
         margin:1rem;
         border-radius: 10px;
         background:rgba(255,255,255,0.3);
+        @include breakPoint(secondBreak) {
+            width:calc(50% - 2rem);
+            float: left;
+        }
+        @include breakPoint(thirdBreak) {
+            width:calc(33.3% - 2rem)
+        }
         .website {
             float: left;
         }
@@ -39,6 +59,9 @@ main .wrapper {
                 float: left;
                 // border:1px solid black;
                 width:85%;
+                @include breakPoint(secondBreak) {
+                    width:80%;
+                }
             }
             .price {
                 float:right;
@@ -69,10 +92,80 @@ figure.rating{
     }
 }
 
-        a, button, input[type="submit"] {
-            color:$secondary;
-            border:1px solid $secondary;
-            padding:5px 15px;
-            background:none;
-            border-radius: 5px;
+a, button, input[type="submit"] {
+    color:$secondary;
+    border:1px solid $secondary;
+    padding:5px 15px;
+    background:none;
+    border-radius: 5px;
+    &:hover, &:active{
+        color:white;
+        background:rgba(0,92,173,0.7);
+    }
+}
+
+.directions {
+    .mapouter {
+        text-align: center;
+        margin: 0 0 10px 0;
+        text-align: center;
+        border-top: 1.5px dotted $secondary;
+    }
+    ul {
+        list-style: none;
+        padding: 0 10px;
+        li {
+            padding: 10px 0;
+            border-bottom: 2px dotted $secondary;
         }
+    }
+    h3 {
+        padding:5px 0;
+        text-align: center;
+        font-size:3rem;
+        background:rgba(214,214,214, 0.8);
+    }
+    .fa-caret-left {
+        font-size: 4.5rem;
+        // border: 2px solid $accent;
+        border-radius: 5px;
+        padding: 2px 5px 0 0;
+        color: $accent;
+        width: 50px;
+        height:50px;
+        text-align: center;
+        z-index:20;
+        position: absolute;
+        top:0;
+        &:hover, &:active {
+            color:lighten($accent, 10%);
+        }
+    }
+    .fa-utensils:before {
+        position: relative;
+        left: -3rem;
+    }
+}
+
+.form {
+    text-align: center;
+    margin: 0 auto;
+}
+form.input input[type=search] {
+    float: left;
+    width: 80%;
+    border: 2px solid $secondary;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 30px;
+}
+form.input input[type=submit] {
+    width: 80%;
+    border: 3px solid $primary;
+    border-radius: 5px;
+    background-color: $secondary;
+    color: white;
+    font-weight: 700;
+    padding: 10px;
+}

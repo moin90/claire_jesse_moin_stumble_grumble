@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import './App.css';
 import axios from 'axios';
 import Qs from 'qs';
-
 // COMPONENTS
 import Results from './components/Results';
 import Footer from './components/Footer';
@@ -49,6 +48,7 @@ class App extends Component {
           }
 
         }).then(res => {
+          console.log(res.data.results)
           this.setState ({
             restaurants: res.data.results,
             originAddress: `${lat} ${lon}`,
@@ -74,6 +74,7 @@ class App extends Component {
                 detailObject.id = restaurant.place_id
                 detailObject.phoneNum = res.data.result.formatted_phone_number
                 detailObject.menu = res.data.result.website
+                console.log(detailObject)
                 const newState = this.state.restaurantDetails
                 newState.push(detailObject);
                 this.setState({
@@ -84,7 +85,7 @@ class App extends Component {
           })
         })
       } // end of geoSuccess
-      var geoError = (error) => {
+      var geoError = function (error) {
         console.log('Error occurred. Error code: ' + error.code);
         document.querySelector('.hide').classList.remove('hide');
       } // end of geoError
@@ -126,6 +127,7 @@ class App extends Component {
           destination:this.state.destination,
           directions:this.state.directions,
         })
+        console.log(res);
       })
     })  
   }

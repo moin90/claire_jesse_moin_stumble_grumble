@@ -2,8 +2,11 @@ header {
     height:100vh;
     text-align: center;
     font-size:2.5rem;
+    font-weight:700;
+    a {
+        border:2px solid $secondary;
+    }
 }
-
 
 header .wrapper {
     position:relative;
@@ -16,6 +19,18 @@ header .wrapper {
         transform: translateX(-50%);
         animation: pulsate 3s infinite;
         z-index:-1;
+        @include breakPoint(firstBreak) {
+            width:30%;
+            left:35%;
+        }
+        @include breakPoint(secondBreak) {
+            width:25%;
+            left:38%;
+        }
+        @include breakPoint(thirdBreak) {
+            width:20%;
+            left:40%;
+        }
     }
     a {
         font-weight:700;
@@ -25,8 +40,5 @@ header .wrapper {
         border:2px solid $secondary;
         border-radius: 10px;
         background:rgba(255,255,255,0.7);
-        &:hover {
-            // color:$accent;
-        }
     }
 }
