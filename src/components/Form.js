@@ -86,7 +86,7 @@ class Form extends Component {
             <form className="input hide" onSubmit={this.handleSubmit}>
                 <label htmlFor="search"></label>
                 <input type="search" id="search" onChange={this.handleChange}/>
-                <input type="submit"/>
+                <input className="website" type="submit"/>
             </form>
         );
     }
