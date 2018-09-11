@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import fullBurger from '../assets/fullBurger.png';
-// import halfBurger from '../assets/halfBurger.png';
 import axios from 'axios';
 import Qs from 'qs';
 
@@ -38,10 +37,10 @@ class Results extends Component {
         for(let i = 1; i <= 5; i++) {
             let burger;
             if( i <= roundedNumber ){
-               burger = <img src={fullBurger} className="colored"/>
+               burger = <img src={fullBurger} className="colored burgerStar"/>
 
             } else {
-                burger = <img src={fullBurger}/>
+                burger = <img className="burgerStar" src={fullBurger}/>
             }
             burgerArray.push(burger)
         }
@@ -54,7 +53,7 @@ class Results extends Component {
         const detailsArray = []
         for (let i = 0; i < this.props.restaurantDetails.length; i++) {
             let menu = this.props.restaurantDetails[i].menu;
-            menu = menu.replace(/^.*:\/\//i, '').replace('www.', '')
+            menu = menu.replace(/^.*:\/\//i, '').replace('www.', '');
             if (this.props.restaurantDetails[i].id === placeId) {
                 detailsArray.push(<li>{this.props.restaurantDetails[i].phoneNum}</li>)
                 detailsArray.push(<li><a href={this.props.restaurantDetails[i].menu}>{menu}</a></li>)
@@ -65,7 +64,7 @@ class Results extends Component {
     }
     
     render() {
-        console.log(this.props.restaurantsArray)
+        // console.log(this.props.restaurantsArray)
         return (
             <div className="results">
                 {this.props.restaurantsArray.map((restaurant) => {
@@ -75,7 +74,7 @@ class Results extends Component {
                                 <h3>{restaurant.name}</h3>
                                 <ul className="clearfix rating">
                                     <li>
-                                        <figure className="clearfix rating">
+                                        <figure className="clearfix burger">
                                             {this.makeBurgers(restaurant.rating, restaurant.place_id)}
                                         </figure>
                                     </li>

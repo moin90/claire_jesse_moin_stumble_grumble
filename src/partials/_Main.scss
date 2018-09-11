@@ -24,7 +24,7 @@ main .wrapper {
             li:nth-of-type(1) {
                 float: left;
                 // border:1px solid black;
-                width:85%;
+                width:10%;
             }
             .price {
                 float:right;
@@ -34,24 +34,23 @@ main .wrapper {
                 // width:30%;
                 font-size:1.5rem;
                 position: relative;
+                font-weight: 700;
+                color: $accent;
             }
         }   
 
     }
 }
 
-.price {
-    font-weight: 700;
-    color: $accent;
-}
-
-figure .rating{
-    img {
-        width:10%;
+ figure .burger{
+    border:1px solid red; 
+    img.burgerStar {
         filter:grayscale(100%);
         float: left;
+        border: 1px solid red;
     }
     img.colored {
         filter:grayscale(0%);
+        float: left;
     }
 }

@@ -87,7 +87,7 @@ class App extends Component {
           })
         })
       } // end of geoSuccess
-      var geoError = function (error) {
+      var geoError = (error) => {
         console.log('Error occurred. Error code: ' + error.code);
         document.querySelector('.hide').classList.remove('hide');
       } // end of geoError
