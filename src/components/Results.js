@@ -52,7 +52,6 @@ class Results extends Component {
                 menu = ''
             } else {
                 menu = this.props.restaurantDetails[i].menu;
-                // menu = menu.replace(/^.*:\/\//i, '').replace('www.', '')
             }
             if (this.props.restaurantDetails[i].id === placeId) {
                 detailsArray.push(<li>{this.props.restaurantDetails[i].phoneNum}</li>)
@@ -72,7 +71,7 @@ class Results extends Component {
                                 <h3>{restaurant.name}</h3>
                                 <ul className="clearfix rating">
                                     <li>
-                                        <figure className="clearfix burger">
+                                        <figure className="clearfix rating">
                                             {this.makeBurgers(restaurant.rating, restaurant.place_id)}
                                         </figure>
                                     </li>
