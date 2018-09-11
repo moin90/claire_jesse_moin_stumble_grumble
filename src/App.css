@@ -157,7 +157,6 @@ header .wrapper {
     animation: pulsate 3s infinite;
     z-index: -1; }
   header .wrapper a {
-    text-decoration: none;
     font-weight: 700;
     color: #005CAD;
     padding: 10px;
@@ -173,27 +172,37 @@ body {
   display: none; }
 
 main .wrapper {
-  padding-top: 3rem; }
+  padding-top: 1px; }
 
 .results {
   padding: 8rem 0; }
   .results article {
-    border: 1px solid blue;
-    padding: 2rem; }
+    border: 1px solid #565656;
+    padding: 2rem;
+    margin: 1rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.3); }
+    .results article .website {
+      float: left; }
+    .results article .phone {
+      margin-bottom: 1rem; }
+    .results article button {
+      float: right;
+      position: relative;
+      bottom: 3px; }
     .results article ul {
       list-style: none;
       padding: 0; }
-    .results article .rating {
-      border: 1px solid pink; }
+      .results article ul li {
+        line-height: 1.5; }
     .results article ul:nth-of-type(1) li:nth-of-type(1) {
       float: left;
       width: 85%; }
     .results article ul:nth-of-type(1) .price {
       float: right;
-      border: 1px solid purple;
       text-align: right;
       padding: 0;
-      font-size: 1.5rem;
+      font-size: 2rem;
       position: relative; }
 
 .price {
@@ -271,6 +280,14 @@ form.input input[type=submit] {
   font-weight: 700;
   padding: 10px; }
 
+a, button, input[type="submit"] {
+  color: #005CAD;
+  border: 1px solid #005CAD;
+  padding: 5px 15px;
+  background: none;
+  border-radius: 5px; }
+
+
 .hide {
   display: none; }
 
@@ -286,7 +303,8 @@ html {
 body {
   background: url("./assets/brickwall.png");
   color: #002350;
-  font-size: 1.8rem; }
+  font-size: 1.8rem;
+  font-family: "Raleway", sans-serif; }
 
 img {
   width: 100%;
@@ -299,10 +317,14 @@ h1 {
 h2 {
   width: 100%;
   text-align: center;
-  background: #D6D6D6;
+  background: rgba(214, 214, 214, 0.8);
   padding: 10px 0;
-  position: fixed; }
+  position: fixed;
+  z-index: 10; }
 
 h3 {
   padding: 0 4rem;
   text-align: center; }
+
+a {
+  text-decoration: none; }

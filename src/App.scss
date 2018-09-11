@@ -13,6 +13,7 @@ body {
   background:url('./assets/brickwall.png');
   color:$primary;
   font-size:1.8rem;
+  font-family:$bodyFont;
 }
 
 img {
@@ -30,12 +31,17 @@ h2 {
   // border:1px solid red;
   width:100%;
   text-align: center;
-  background:$light;
+  background:rgba(214,214,214, 0.8);
   padding:10px 0;
   position: fixed;
+  z-index: 10;
 }
 
 h3 {
   padding:0 4rem;
   text-align: center;
+}
+
+a {
+  text-decoration: none;
 }
