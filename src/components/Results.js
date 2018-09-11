@@ -52,7 +52,6 @@ class Results extends Component {
                 menu = ''
             } else {
                 menu = this.props.restaurantDetails[i].menu;
-                // menu = menu.replace(/^.*:\/\//i, '').replace('www.', '')
             }
             if (this.props.restaurantDetails[i].id === placeId) {
                 detailsArray.push(<li>{this.props.restaurantDetails[i].phoneNum}</li>)
