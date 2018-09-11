@@ -50,30 +50,41 @@ class Results extends Component {
     getDirections = (address) => {
         this.props.getDestination(address)
     }
+    getDetails = (placeId) => {
+        const detailsArray = []
+        for (let i = 0; i < this.props.restaurantDetails.length; i++) {
+            let menu = this.props.restaurantDetails[i].menu;
+            menu = menu.replace(/^.*:\/\//i, '').replace('www.', '')
+            if (this.props.restaurantDetails[i].id === placeId) {
+                detailsArray.push(<li>{this.props.restaurantDetails[i].phoneNum}</li>)
+                detailsArray.push(<li><a href={this.props.restaurantDetails[i].menu}>{menu}</a></li>)
+                    
+            }
+        }
+        return detailsArray
+    }
     
     render() {
+        console.log(this.props.restaurantsArray)
         return (
             <div className="results">
                 {this.props.restaurantsArray.map((restaurant) => {
-
-                    // console.log(restaurant.name);
                     return (
                         <section className={restaurant.place_id} key={restaurant.place_id}>
                             <article>
                                 <h3>{restaurant.name}</h3>
-                                <ul>
-                                    <li>{restaurant.vicinity != undefined ? restaurant.vicinity : restaurant.formatted_address}</li>
+                                <ul className="clearfix rating">
                                     <li>
                                         <figure className="clearfix">
                                             {this.makeBurgers(restaurant.rating, restaurant.place_id)}
                                         </figure>
                                     </li>
-                                    <li>{this.priceInDollars(restaurant.price_level)}</li>
+                                  
+                                    <li className="price">{this.priceInDollars(restaurant.price_level)}</li>
                                 </ul>
                                 <ul>
-                                    {this.props.restaurantDetails.map((details) => {
-                                        console.log(details.id);
-                                    })}
+                                    <li>{restaurant.vicinity != undefined ? restaurant.vicinity : restaurant.formatted_address}</li>
+                                    {this.getDetails(restaurant.place_id)}
                                 </ul>
                                 <button onClick={() => {restaurant.vicinity != undefined ? this.getDirections(restaurant.vicinity) : this.getDirections(restaurant.formatted_address)}}>Get Directions</button>
     

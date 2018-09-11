@@ -75,7 +75,7 @@ class App extends Component {
                 detailObject.id = restaurant.place_id
                 detailObject.phoneNum = res.data.result.formatted_phone_number
                 detailObject.menu = res.data.result.website
-                console.log(detailObject)
+                // console.log(detailObject)
                 const newState = this.state.restaurantDetails
                 newState.push(detailObject);
                 this.setState({

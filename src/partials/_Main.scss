@@ -3,7 +3,7 @@
 }
 
 main .wrapper {
-    border:5px solid purple;
+    // border:5px solid purple;
  
 }
 
@@ -12,17 +12,65 @@ main .wrapper {
     article {
         border:1px solid blue;
         padding:2rem;
-        ul {
+        ul { 
             list-style:none;
             padding:0;
         }
+        .rating {
+            border:1px solid pink;
+        }
+        ul:nth-of-type(1) {
+            // border: 1px solid red;
+            li:nth-of-type(1) {
+                float: left;
+                // border:1px solid black;
+                width:85%;
+            }
+            .price {
+                float:right;
+                border:1px solid purple;
+                text-align: right;
+                padding:0;
+                // width:30%;
+                font-size:1.5rem;
+                position: relative;
+            }
+        }   
+
     }
+}
+
+.price {
+    font-weight: 700;
+    color: $accent;
+}
+
+figure {
     img {
-        width:5%;
+        width:10%;
         filter:grayscale(100%);
         float: left;
     }
     img.colored {
         filter:grayscale(0%);
     }
+}
+
+.mapouter {
+    text-align: center;
+}
+
+.directions {
+    h3 {
+        text-align: center;
+    }
+    .fa-caret-square-left {
+        font-size: 5rem;
+    }
+    button {
+        width: 7rem;
+        height: 6rem;
+        float: left;
+    }
+
 }
