@@ -197,6 +197,13 @@ main .wrapper {
     main .wrapper {
       width: 90%; } }
 
+figure.logo {
+  width: 50px;
+  z-index: 11;
+  position: fixed;
+  left: 0;
+  top: 5px; }
+
 .preloader {
   height: 100vh; }
 
@@ -225,7 +232,7 @@ main .wrapper {
     .results article button {
       float: right;
       position: relative;
-      bottom: 3px; }
+      bottom: 4px; }
     .results article ul {
       list-style: none;
       padding: 0; }
@@ -393,8 +400,9 @@ h2 {
   width: 100%;
   text-align: center;
   background: #D6D6D6;
-  padding: 10px 0;
+  padding: 10px 0 10px 5px;
   position: fixed;
+  top: 0;
   z-index: 10; }
 
 h3 {
