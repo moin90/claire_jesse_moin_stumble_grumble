@@ -44,6 +44,10 @@ header .wrapper {
         border:2px solid $secondary;
         border-radius: 10px;
         background:rgba(255,255,255,0.7);
+        &:hover, &:active {
+            background:$secondary;
+            color:white;
+        }
     }
 }
 
