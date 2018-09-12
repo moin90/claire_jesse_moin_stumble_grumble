@@ -22,6 +22,7 @@ header .wrapper {
         transform: translateX(-50%);
         animation: pulsate 3s infinite;
         z-index:-1;
+        // border:1px solid red;
         @include breakPoint(firstBreak) {
             width:30%;
             left:35%;
@@ -45,3 +46,4 @@ header .wrapper {
         background:rgba(255,255,255,0.7);
     }
 }
+

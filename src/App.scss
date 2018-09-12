@@ -9,6 +9,10 @@ html {
 
 }
 
+* {
+  transition:all 0.2s ease-in-out;
+}
+
 body {
   background:url('./assets/brickwall.png');
   color:$primary;
@@ -38,9 +42,10 @@ h2 {
   font-size:3rem;
   width:100%;
   text-align: center;
-  background:rgba(214,214,214, 0.8);
-  padding:10px 0;
+  background:$light;
+  padding:10px 0 10px 5px;
   position: fixed;
+  top:0;
   z-index: 10;
 }
 

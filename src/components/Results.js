@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import fullBurger from '../assets/fullBurger.png';
 import { Pulse } from 'react-preloading-component';
+import Footer from './Footer';
 
 class Results extends Component {
     constructor() {
@@ -14,10 +15,6 @@ class Results extends Component {
         this.setState({
             destination: destination,
         })
-    }
-
-    getLocation = () => {
-        console.log('you clicked me')
     }
     priceInDollars = (price) => {
         let dollarString = '$'
@@ -44,17 +41,6 @@ class Results extends Component {
     }
     getDirections = (address) => {
         this.props.getDestination(address)
-        this.mapPreloader()
-    }
-    mapPreloader = () => {
-        if (this.state.destination.length === 0) {
-            return (
-                 <Pulse
-                    color="#005CAD"
-                    size="40px"
-                 />
-            )
-        }
     }
     getDetails = (placeId) => {
         const detailsArray = []
@@ -72,9 +58,6 @@ class Results extends Component {
         }
         return detailsArray
     }
-    // displayPreloader = () => {
-    //     if (this.props.length)
-    // }
     render() {
         {if (this.props.restaurantsArray.length === 0 && this.props.userInput === false) {
             return (
@@ -104,7 +87,7 @@ class Results extends Component {
                                         <li className="price">{this.priceInDollars(restaurant.price_level)}</li>
                                     </ul>
                                     <ul>
-                                        <li className="address">{restaurant.vicinity != undefined ? restaurant.vicinity : restaurant.formatted_address}</li>
+                                        <li className="address">{restaurant.vicinity != undefined ? restaurant.vicinity.replace(/\([^\)]*?\)/g, '') : restaurant.formatted_address.replace(/\([^\)]*?\)/g, '')}</li>
                                         {this.getDetails(restaurant.place_id)}
     
                                     </ul>

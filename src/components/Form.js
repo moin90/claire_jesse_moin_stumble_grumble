@@ -46,13 +46,13 @@ class Form extends Component {
     }
     render() {
         return (
-            <section className="form">
-                <form className="input hide" onSubmit={this.handleSubmit}>
-                    <label htmlFor="search"></label>
-                    <input type="search" id="search" placeholder="Enter your location" onChange={this.handleChange} />
-                    <input type="submit" value="I'M STARVING!"/>
-                </form>
-            </section>
+                <section className="form sticky clearfix">
+                    <form className="input hide clearfix" onSubmit={this.handleSubmit}>
+                        <label htmlFor="search"></label>
+                        <input type="search" id="search" placeholder="Enter your location" onChange={this.handleChange} />
+                        <input type="submit" value="Go!"/>
+                    </form>
+                </section>
         ); 
     }
 };
