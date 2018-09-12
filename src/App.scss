@@ -24,6 +24,9 @@ body {
   @include breakPoint(thirdBreak) {
     font-size:1.8rem;
   }
+  @include breakPoint(fourthBreak) {
+    font-size:1.6rem;
+  }
 }
 
 img {

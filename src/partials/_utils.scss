@@ -16,7 +16,7 @@ $light: #D6D6D6;
         @media (min-width:1200px) { @content;}
     }
     @if $point == fourthBreak {
-        @media (min-width:450px) {@content;}
+        @media (max-width:1500px) {@content;}
     }
   
 }
