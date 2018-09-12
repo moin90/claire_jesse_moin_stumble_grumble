@@ -52,7 +52,7 @@ class Results extends Component {
                 menu = this.props.restaurantDetails[i].menu;
             }
             if (this.props.restaurantDetails[i].id === placeId) {
-                detailsArray.push(<li className="phone"><a className="phone" href="tel:{this.props.restaurantDetails[i].phoneNum}">{this.props.restaurantDetails[i].phoneNum}</a></li>)
+                detailsArray.push(<li className="phone"><a className="phone" href={`tel:${this.props.restaurantDetails[i].phoneNum}`}>{this.props.restaurantDetails[i].phoneNum}</a></li>)
                 detailsArray.push(<li className="website"><a href={this.props.restaurantDetails[i].menu}>Website</a></li>)
             }
         }
