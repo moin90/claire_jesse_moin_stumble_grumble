@@ -19,6 +19,14 @@ main .wrapper {
  
 }
 
+figure.logo {
+    width:50px;
+    z-index:11;
+    position: fixed;
+    left:0;
+    top:5px;
+}
+
 .preloader {
     height: 100vh;
 }
@@ -52,7 +60,7 @@ main .wrapper {
             // background:green;
             float: right;
             position: relative;
-            bottom:3px;
+            bottom:4px;
         }
         ul { 
             list-style:none;
