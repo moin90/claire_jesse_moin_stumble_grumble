@@ -397,6 +397,9 @@ body {
   @media (min-width: 1200px) {
     body {
       font-size: 1.8rem; } }
+  @media (max-width: 1500px) {
+    body {
+      font-size: 1.6rem; } }
 
 img {
   width: 100%;
