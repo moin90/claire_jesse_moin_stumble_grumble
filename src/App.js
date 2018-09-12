@@ -13,8 +13,6 @@ class App extends Component {
     super();
     this.state = {
       restaurants: [],
-      // lat: '',
-      // lon: '',
       destination: '',
       originAddress: '',
       directions: '',
@@ -51,7 +49,7 @@ class App extends Component {
           }
 
         }).then(res => {
-          console.log(res.data.results)
+          // console.log(res.data.results)
           this.setState ({
             restaurants: res.data.results,
             originAddress: `${lat} ${lon}`
@@ -77,7 +75,7 @@ class App extends Component {
                 detailObject.id = restaurant.place_id
                 detailObject.phoneNum = res.data.result.formatted_phone_number
                 detailObject.menu = res.data.result.website
-                console.log(detailObject)
+                // console.log(detailObject)
                 const newState = this.state.restaurantDetails
                 newState.push(detailObject);
                 this.setState({
@@ -130,7 +128,7 @@ class App extends Component {
           destination:this.state.destination,
           directions:this.state.directions,
         })
-        console.log(res);
+        // console.log(res);
       })
     })  
   }
@@ -147,11 +145,11 @@ class App extends Component {
   render() {
     // console.log(this.state.restaurantDetails)
     return (
-      <React.Fragment>
-        <main className="App">
+      <div className="stumbleGrumble">
+        <main>
           <h2>StumbleGrumble</h2>
+          <Form getUserInput={this.getUserInput} getOriginAddress={this.getOriginAddress} setPlaceDetails={this.setPlaceDetails}/>
           <div className="wrapper">
-              <Form getUserInput={this.getUserInput} getOriginAddress={this.getOriginAddress} setPlaceDetails={this.setPlaceDetails}/>
               <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} destination={this.state.destination} restaurantDetails={this.state.restaurantDetails} userInput={this.state.userInput}/>
               <div id="startLat"></div>   
               <div id="startLon"></div>  
@@ -159,7 +157,7 @@ class App extends Component {
           </div>
         </main>
         <Footer/>
-      </React.Fragment>
+      </div>
       
 
     );

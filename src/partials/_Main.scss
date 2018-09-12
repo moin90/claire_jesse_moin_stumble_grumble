@@ -24,13 +24,17 @@ main .wrapper {
 }
 
 .results {
-    padding:8rem 0;
+    padding:9.5rem 0;
     article {
         border:1px solid $base;
         padding:2rem;
         margin:1rem;
         border-radius: 10px;
         background:rgba(255,255,255,0.3);
+        &:hover, &:active {
+            transform:scale(1.02);
+            box-shadow:1px 1px 10px darken($light, 10%);
+        }
         @include breakPoint(secondBreak) {
             width:calc(50% - 2rem);
             float: left;
@@ -74,8 +78,11 @@ main .wrapper {
                 text-align: right;
                 padding:0;
                 // width:30%;
-                font-size:2rem;
+                font-size:1.5rem;
                 position: relative;
+                @include breakPoint(firstBreak) {
+                    font-size:2rem;
+                }
             }
         }   
     }
@@ -97,7 +104,7 @@ figure.rating{
     }
 }
 
-a, button, input[type="submit"] {
+a, button {
     color:$secondary;
     border:1px solid $secondary;
     padding:5px 15px;
@@ -130,14 +137,16 @@ a, button, input[type="submit"] {
     h3 {
         padding:5px 0;
         text-align: center;
-        font-size:3rem;
+        font-size:2rem;
         background:rgba(214,214,214, 0.8);
+        @include breakPoint(secondBreak) {
+            font-size:3rem;
+        }
     }
     .fa-caret-left {
-        font-size: 4.5rem;
+        font-size: 3.5rem;
         // border: 2px solid $accent;
         border-radius: 5px;
-        padding: 2px 5px 0 0;
         color: $accent;
         width: 50px;
         height:50px;
@@ -148,6 +157,9 @@ a, button, input[type="submit"] {
         &:hover, &:active {
             color:lighten($accent, 10%);
         }
+        @include breakPoint(secondBreak) {
+            font-size:5rem;
+        }
     }
     .fa-utensils:before {
         position: relative;
@@ -155,4 +167,18 @@ a, button, input[type="submit"] {
     }
 }
 
+.stumbleGrumble {
+    position: relative;
+}
 
+footer {
+    text-align: center;
+    color: $primary;
+    p {
+        position: fixed;
+        background:$light;
+        display:block;
+        bottom:0;
+        width:100%;
+    }
+}
