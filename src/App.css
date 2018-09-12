@@ -229,7 +229,10 @@ figure.logo {
     .results article .website {
       float: left; }
     .results article .phone {
-      margin-bottom: 1rem; }
+      margin-bottom: 1rem;
+      color: #005CAD; }
+      .results article .phone:hover, .results article .phone:active {
+        color: #D2465B; }
     .results article button {
       float: right;
       position: relative;
@@ -267,13 +270,13 @@ figure.rating img {
 figure.rating img.colored {
   filter: grayscale(0%); }
 
-a, button {
+a:not(.phone), button {
   color: #005CAD;
   border: 1px solid #005CAD;
   padding: 5px 15px;
   background: none;
   border-radius: 5px; }
-  a:hover, a:active, button:hover, button:active {
+  a:not(.phone):hover, a:not(.phone):active, button:hover, button:active {
     color: white;
     background: rgba(0, 92, 173, 0.7); }
 
