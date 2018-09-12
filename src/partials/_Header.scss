@@ -6,12 +6,15 @@ header {
     a {
         border:2px solid $secondary;
     }
+    h4 {
+        color: $secondary;
+    }
 }
 
 header .wrapper {
     position:relative;
-    top:50%;
-    transform:translateY(-50%);
+    top:30%;
+    transform:translateY(-30%);
     figure {
         width:50%;
         position: relative;

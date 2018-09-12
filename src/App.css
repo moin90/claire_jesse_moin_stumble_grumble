@@ -147,11 +147,13 @@ header {
   font-weight: 700; }
   header a {
     border: 2px solid #005CAD; }
+  header h4 {
+    color: #005CAD; }
 
 header .wrapper {
   position: relative;
-  top: 50%;
-  transform: translateY(-50%); }
+  top: 30%;
+  transform: translateY(-30%); }
   header .wrapper figure {
     width: 50%;
     position: relative;
@@ -305,6 +307,15 @@ a, button, input[type="submit"] {
   position: relative;
   left: -3rem; }
 
+.hide {
+  display: none; }
+
+.startLat, .startLon {
+  display: none; }
+
+.input {
+  margin: 6rem; }
+
 .form {
   text-align: center;
   margin: 0 auto; }
@@ -326,15 +337,6 @@ form.input input[type=submit] {
   color: white;
   font-weight: 700;
   padding: 10px; }
-
-.hide {
-  display: none; }
-
-.startLat, .startLon {
-  display: none; }
-
-.input {
-  margin: 6rem; }
 
 html {
   font-size: 62.5%; }
