@@ -145,11 +145,15 @@ header {
   text-align: center;
   font-size: 2.5rem;
   font-weight: 700; }
+  header a {
+    border: 2px solid #005CAD; }
+  header h4 {
+    color: #005CAD; }
 
 header .wrapper {
   position: relative;
-  top: 50%;
-  transform: translateY(-50%); }
+  top: 30%;
+  transform: translateY(-30%); }
   header .wrapper figure {
     width: 50%;
     position: relative;
@@ -278,7 +282,8 @@ a:not(.phone), button {
   border-radius: 5px; }
   a:not(.phone):hover, a:not(.phone):active, button:hover, button:active {
     color: white;
-    background: rgba(0, 92, 173, 0.7); }
+    background: rgba(0, 92, 173, 0.7);
+    transition: 0.2s all ease; }
 
 .directions .mapouter {
   text-align: center;
@@ -313,9 +318,11 @@ a:not(.phone), button {
   text-align: center;
   z-index: 20;
   position: absolute;
-  top: 0; }
+  top: 0;
+  cursor: pointer; }
   .directions .fa-caret-left:hover, .directions .fa-caret-left:active {
-    color: #dc6f7f; }
+    color: #dc6f7f;
+    transition: 0.2s all ease; }
   @media (min-width: 900px) {
     .directions .fa-caret-left {
       font-size: 5rem; } }

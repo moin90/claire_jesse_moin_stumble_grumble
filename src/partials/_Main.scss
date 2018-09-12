@@ -125,6 +125,7 @@ a:not(.phone), button {
     &:hover, &:active{
         color:white;
         background:rgba(0,92,173,0.7);
+        transition: 0.2s all ease;
     }
 }
 
@@ -167,8 +168,10 @@ a:not(.phone), button {
         z-index:20;
         position: absolute;
         top:0;
+        cursor: pointer;
         &:hover, &:active {
             color:lighten($accent, 10%);
+            transition: 0.2s all ease;
         }
         @include breakPoint(secondBreak) {
             font-size:5rem;
