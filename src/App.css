@@ -145,8 +145,6 @@ header {
   text-align: center;
   font-size: 2.5rem;
   font-weight: 700; }
-  header a {
-    border: 2px solid #005CAD; }
 
 header .wrapper {
   position: relative;
@@ -179,6 +177,9 @@ header .wrapper {
     border: 2px solid #005CAD;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.7); }
+    header .wrapper a:hover, header .wrapper a:active {
+      background: #005CAD;
+      color: white; }
 
 body {
   font-family: 'Raleway', sans-serif; }

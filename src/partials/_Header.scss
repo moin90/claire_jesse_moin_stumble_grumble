@@ -3,9 +3,6 @@ header {
     text-align: center;
     font-size:2.5rem;
     font-weight:700;
-    a {
-        border:2px solid $secondary;
-    }
 }
 
 header .wrapper {
@@ -41,6 +38,10 @@ header .wrapper {
         border:2px solid $secondary;
         border-radius: 10px;
         background:rgba(255,255,255,0.7);
+        &:hover, &:active {
+            background:$secondary;
+            color:white;
+        }
     }
 }
 
