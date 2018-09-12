@@ -55,6 +55,10 @@ figure.logo {
         }
         .phone {
             margin-bottom:1rem;
+            color:$secondary;
+            &:hover, &:active {
+                color:$accent;
+            }
         }
         button {
             // background:green;
@@ -112,7 +116,7 @@ figure.rating{
     }
 }
 
-a, button {
+a:not(.phone), button {
     color:$secondary;
     border:1px solid $secondary;
     padding:5px 15px;
@@ -123,6 +127,7 @@ a, button {
         background:rgba(0,92,173,0.7);
     }
 }
+
 
 .directions {
     .mapouter {
