@@ -1,7 +1,3 @@
-body {
-    font-family: 'Raleway', sans-serif;
-}
-
 #startLat, #startLon {
     display:none;
 }
@@ -11,12 +7,14 @@ main .wrapper {
     margin:0 auto;
     @include breakPoint(firstBreak) {
         // border:1px solid red;
-        width:80%;
+        width:75%;
     }
-    @include breakPoint(thirdBreak) {
-        width:90%;
+    @include breakPoint(secondBreak) {
+        width:98%;
     }
- 
+    @include breakPoint(fourthBreak) {
+        width:85%;
+    }
 }
 
 figure.logo {
@@ -49,6 +47,9 @@ figure.logo {
         }
         @include breakPoint(thirdBreak) {
             width:calc(33.3% - 2rem)
+        }
+        @include breakPoint(sixthBreak) {
+            width:calc(25% - 2rem);
         }
         .website {
             float: left;
