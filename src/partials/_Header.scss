@@ -3,12 +3,6 @@ header {
     text-align: center;
     font-size:2.5rem;
     font-weight:700;
-    a {
-        border:2px solid $secondary;
-    }
-    h4 {
-        color: $secondary;
-    }
 }
 
 header .wrapper {
@@ -22,7 +16,6 @@ header .wrapper {
         transform: translateX(-50%);
         animation: pulsate 3s infinite;
         z-index:-1;
-        // border:1px solid red;
         @include breakPoint(firstBreak) {
             width:30%;
             left:35%;
@@ -50,4 +43,3 @@ header .wrapper {
         }
     }
 }
-
