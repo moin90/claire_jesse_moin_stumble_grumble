@@ -8,8 +8,9 @@ class Header extends Component {
             <header>
                 <div className="wrapper">
                     <h1>Stumble Grumble</h1>
-                    <figure><img src={logo} alt="Vomitting Burger Logo for StumbleGrumble"/></figure>
-                    <Link to="/StumbleGrumble">Get Started</Link>
+                    <h4>Grab a bite. Thank yourself in the A.M.</h4>
+                    <figure><img className="bgLogo" src={logo} alt="Vomitting Burger Logo for StumbleGrumble"/></figure>
+                    <Link className="start" to="/StumbleGrumble"><span>Get Started</span></Link>
                 </div>
             </header>
             

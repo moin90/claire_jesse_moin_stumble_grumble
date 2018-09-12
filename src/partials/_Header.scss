@@ -7,8 +7,8 @@ header {
 
 header .wrapper {
     position:relative;
-    top:50%;
-    transform:translateY(-50%);
+    top:30%;
+    transform:translateY(-30%);
     figure {
         width:50%;
         position: relative;
@@ -16,7 +16,6 @@ header .wrapper {
         transform: translateX(-50%);
         animation: pulsate 3s infinite;
         z-index:-1;
-        // border:1px solid red;
         @include breakPoint(firstBreak) {
             width:30%;
             left:35%;
@@ -44,4 +43,3 @@ header .wrapper {
         }
     }
 }
-
