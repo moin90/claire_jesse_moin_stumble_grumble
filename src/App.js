@@ -50,7 +50,6 @@ class App extends Component {
           }
 
         }).then(res => {
-          // console.log(res.data.results)
           this.setState ({
             restaurants: res.data.results,
             originAddress: `${lat} ${lon}`
@@ -66,7 +65,7 @@ class App extends Component {
                 params: {
                   reqUrl: 'https://maps.googleapis.com/maps/api/place/details/json',
                   params: {
-                    key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
+                    key: 'AIzaSyAbAXUsOiNgsbUhM0Z1MB7Us9SrDtRXfsI',
                     placeid: restaurant.place_id,
                   },
                   xmlToJSON: false
@@ -76,7 +75,6 @@ class App extends Component {
                 detailObject.id = restaurant.place_id
                 detailObject.phoneNum = res.data.result.formatted_phone_number
                 detailObject.menu = res.data.result.website
-                // console.log(detailObject)
                 const newState = this.state.restaurantDetails
                 newState.push(detailObject);
                 this.setState({
@@ -92,7 +90,7 @@ class App extends Component {
         document.querySelector('.hide').classList.remove('hide');
       } // end of geoError
       navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
-    };
+    }; //end of component did mount
   // }
   setPlaceDetails = (details) => {
     this.setState({
