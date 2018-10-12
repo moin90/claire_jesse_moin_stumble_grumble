@@ -17,12 +17,12 @@ class Form extends Component {
            originAddress: e.target.value 
         }, () => {
             this.props.getOriginAddress(this.state.originAddress)
-            console.log(this.state.originAddress)
+            // console.log(this.state.originAddress)
         }) 
     }
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log(this.state.originAddress)
+        // console.log(this.state.originAddress)
         axios({
             method: 'GET',
             url: 'https://proxy.hackeryou.com',
@@ -33,7 +33,7 @@ class Form extends Component {
             params: {
                 reqUrl: 'https://maps.googleapis.com/maps/api/place/textsearch/json',
                 params: {
-                    key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
+                    key: 'AIzaSyAtEinSkBfsmHf9Em2PSzzuDIPiIxM_108',
                     query: `${this.state.originAddress}`,
                     radius: 1000,
                     type: 'restaurant',
@@ -42,7 +42,7 @@ class Form extends Component {
                 xmlToJSON: false
             }
         }).then(res => {
-            console.log(res.data.results)
+            // console.log(res.data.results)
             this.props.getUserInput(res.data.results)
             this.setState({
                 restaurants: res.data.results
