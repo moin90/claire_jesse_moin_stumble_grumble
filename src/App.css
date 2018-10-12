@@ -237,7 +237,7 @@ figure.logo {
       color: #005CAD; }
       .results article .phone:hover, .results article .phone:active {
         color: #D2465B; }
-    .results article button {
+    .results article button, .results article .getDirections {
       float: right;
       position: relative;
       bottom: 4px; }
