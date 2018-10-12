@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import fullBurger from '../assets/fullBurger.png';
 import { Pulse } from 'react-preloading-component';
-import Footer from './Footer';
 
 class Results extends Component {
     constructor() {
         super();
         this.state = {
             destination: '',
-            detailsObject: {}
+            detailsObject: {},
+            originAddress: ''
         }
     }
     destination = (destination) => {
@@ -39,8 +39,9 @@ class Results extends Component {
         }
         return burgerArray;
     }
-    getDirections = (address) => {
-        this.props.getDestination(address)
+    getOriginAddress = (destination, key) => {
+        let directionsLink = document.getElementById(key)
+        directionsLink.setAttribute('href', `https://www.google.com/maps/dir/?api=1&origin=${this.props.originAddress}&destination=${destination}`);
     }
     getDetails = (placeId) => {
         const detailsArray = []
@@ -53,7 +54,7 @@ class Results extends Component {
             }
             if (this.props.restaurantDetails[i].id === placeId) {
                 detailsArray.push(<li className="phone"><a className="phone" href={`tel:${this.props.restaurantDetails[i].phoneNum}`}>{this.props.restaurantDetails[i].phoneNum}</a></li>)
-                detailsArray.push(<li className="website"><a href={this.props.restaurantDetails[i].menu}>Website</a></li>)
+                detailsArray.push(<li className="website"><a target="_blank" href={this.props.restaurantDetails[i].menu}>Website</a></li>)
             }
         }
         return detailsArray
@@ -91,7 +92,7 @@ class Results extends Component {
                                         {this.getDetails(restaurant.place_id)}
     
                                     </ul>
-                                    <button onClick={() => { restaurant.vicinity != undefined ? this.getDirections(restaurant.vicinity) : this.getDirections(restaurant.formatted_address) }}>Get Directions</button>
+                                    <a id={restaurant.place_id} className="getDirections" href="#" target="_blank" onClick={() => { restaurant.vicinity != undefined ? this.getOriginAddress(restaurant.vicinity, restaurant.place_id) : this.getOriginAddress(restaurant.formatted_address, restaurant.place_id) }}>Get Directions</a>
                                 </article>
                             </section>
                         )

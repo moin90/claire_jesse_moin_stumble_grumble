@@ -65,7 +65,7 @@ class App extends Component {
                 params: {
                   reqUrl: 'https://maps.googleapis.com/maps/api/place/details/json',
                   params: {
-                    key: 'AIzaSyAbAXUsOiNgsbUhM0Z1MB7Us9SrDtRXfsI',
+                    key: 'AIzaSyBfUHpjuT7SS228e2hw7-P9Ndze6j7Hi4Q',
                     placeid: restaurant.place_id,
                   },
                   xmlToJSON: false
@@ -86,7 +86,7 @@ class App extends Component {
         })
       } // end of geoSuccess
       var geoError = function (error) {
-        console.log('Error occurred. Error code: ' + error.code);
+        // console.log('Error occurred. Error code: ' + error.code);
         document.querySelector('.hide').classList.remove('hide');
       } // end of geoError
       navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
@@ -97,40 +97,7 @@ class App extends Component {
       restaurantDetails: details,
     })
   }
-  getDestination = (destination) => {
-    this.setState({
-      destination: destination
-    }, () => {
-      axios({
-        method: 'GET',
-        url: 'https://proxy.hackeryou.com',
-        dataResponse: 'json',
-        paramsSerializer: function (params) {
-          return Qs.stringify(params, { arrayFormat: 'brackets' })
-        },
-        params: {
-          reqUrl: 'https://maps.googleapis.com/maps/api/directions/json?',
-          params: {
-            key: 'AIzaSyBoRawmMG_0IPI25vStlhDGFifDwDcWZFs',
-            origin: `${this.state.originAddress}`,
-            destination: `${this.state.destination}`,
-            mode: 'walking'
-          },
-          xmlToJSON: false
-        }
-      }).then(res => {
-        this.setState({
-          directions: res.data.routes[0].legs[0].steps
-        })
-        this.props.history.push({
-          pathname: '/results/directions',
-          destination:this.state.destination,
-          directions:this.state.directions,
-        })
-        // console.log(res);
-      })
-    })  
-  }
+  // get directions taken out from here
   getUserInput = (restaurantsArray) => {
     this.setState({
       restaurants: restaurantsArray
@@ -155,7 +122,7 @@ class App extends Component {
           {/* </Link> */}
           <Form getUserInput={this.getUserInput} getOriginAddress={this.getOriginAddress} setPlaceDetails={this.setPlaceDetails}/>
           <div className="wrapper">
-              <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} destination={this.state.destination} restaurantDetails={this.state.restaurantDetails} userInput={this.state.userInput}/>
+              <Results restaurantsArray={this.state.restaurants} getDestination={this.getDestination} destination={this.state.destination} restaurantDetails={this.state.restaurantDetails} userInput={this.state.userInput} originAddress={this.state.originAddress}/>
               <div id="startLat"></div>   
               <div id="startLon"></div>  
               
