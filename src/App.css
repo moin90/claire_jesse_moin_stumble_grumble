@@ -145,10 +145,6 @@ header {
   text-align: center;
   font-size: 2.5rem;
   font-weight: 700; }
-  header a {
-    border: 2px solid #005CAD; }
-  header h4 {
-    color: #005CAD; }
 
 header .wrapper {
   position: relative;
@@ -409,7 +405,8 @@ img {
 
 h1 {
   font-size: 6rem;
-  text-align: center; }
+  text-align: center;
+  z-index: 10; }
 
 h2 {
   font-size: 3rem;
@@ -427,6 +424,11 @@ h3 {
   @media (min-width: 700px) {
     h3 {
       height: 5rem; } }
+
+h4 {
+  color: #005CAD;
+  font-size: 2.75rem;
+  z-index: 10; }
 
 a {
   text-decoration: none; }
